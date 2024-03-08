@@ -139,11 +139,9 @@
 
     <div class="login__image one-half medium-down--one-whole column is-order-aligned-{{ section.settings.image_position }}">
       {% if section.settings.image %}
-        {%
-          render 'image-element',
-          image: section.settings.image,
-          alt: section.settings.image.alt,
-          focal_point: section.settings.image.presentation.focal_point,
+        {% render 'image-element',
+                image: section.settings.image,
+                alt: section.settings.image.alt
         %}
       {% endif %}
     </div>
@@ -248,19 +246,21 @@
 {% endschema %}
 
 <script type="text/javascript">
-  function showRecoverPasswordForm() {
+  function showRecoverPasswordForm(e) {
+    e.preventDefault();
     document.getElementById('recover-password').style.display = 'block';
     document.getElementById('customer_login').style.display='none';
     return false;
   }
 
-  function hideRecoverPasswordForm() {
+  function hideRecoverPasswordForm(e) {
+    e.preventDefault();
     document.getElementById('recover-password').style.display = 'none';
     document.getElementById('customer_login').style.display = 'block';
     return false;
   }
 
-  if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+  if (window.location.hash == '#recover-password') { showRecoverPasswordForm() }
 
   // reset_success is only true when the reset form is
   {% if reset_success %}

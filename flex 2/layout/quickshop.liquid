@@ -2,10 +2,6 @@
 <!doctype html>
 <html lang="{{ shop.locale }}">
 <head>
-  <script>
-    window.Store = window.Store || {};
-    window.Store.id = {{ shop.id }};
-  </script>
   <meta charset="utf-8">
   <meta http-equiv="cleartype" content="on">
   <meta name="robots" content="index,follow">
@@ -22,11 +18,19 @@
   <link rel="dns-prefetch" href="https://monorail-edge.shopifysvc.com">
   <link rel="dns-prefetch" href="https://ajax.googleapis.com">
 
+  {% if settings.enable_shopify_review_comments %}
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+  {% endif %}
+
   <!-- Preconnects -->
   <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
   <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
   <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
   <link rel="preconnect" href="https://ajax.googleapis.com">
+
+  {% if settings.enable_shopify_review_comments %}
+    <link rel="preconnect" href="https://productreviews.shopifycdn.com">
+  {% endif %}
 
   <!-- Preloads -->
   <!-- Preload CSS -->
@@ -39,7 +43,7 @@
   <link rel="preload" href="{{ 'utilities.js' | asset_url }}" as="script">
   <link rel="preload" href="{{ 'app.js' | asset_url }}" as="script">
 
-  {% if settings.show_multiple_currencies or shop.enabled_currencies.size > 1 or localization.available_countries.size > 1 %}
+  {% if settings.show_multiple_currencies or shop.enabled_currencies.size > 1 %}
     <link rel="preload" href="/services/javascripts/currencies.js" as="script">
     <link rel="preload" href="{{ 'currencyConversion.js' | asset_url }}" as="script">
   {% endif %}
@@ -68,7 +72,7 @@
   {% comment %}Inject theme-object begin{% endcomment %}
   <script>
     window.PXUTheme = window.PXUTheme || {};
-    window.PXUTheme.version = '5.1.1';
+    window.PXUTheme.version = '3.1.1';
     window.PXUTheme.name = 'Flex';
   </script>
   {% comment %}Inject theme-object end{% endcomment %}
@@ -79,7 +83,7 @@
   <script src="{{ 'utilities.js' | asset_url }}" defer></script>
   <script src="{{ 'app.js' | asset_url }}" defer></script>
 
-  {%- if settings.show_multiple_currencies or shop.enabled_currencies.size > 1 or localization.available_countries.size > 1 -%}
+  {%- if settings.show_multiple_currencies or shop.enabled_currencies.size > 1 -%}
     <script type="text/javascript" src="/services/javascripts/currencies.js"></script>
     <script src="{{ 'currencyConversion.js' | asset_url }}" defer></script>
   {%- endif -%}
@@ -168,24 +172,6 @@
   data-shop-url="{{ shop.url }}"
   data-current-lang="{{ request.locale.iso_code }}"
 >
-  {% comment %}Inject icon-star-symbol begin{% endcomment %}
-  <svg
-    class="icon-star-reference"
-    aria-hidden="true"
-    focusable="false"
-    role="presentation"
-    xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="3 3 17 17" fill="none"
-  >
-    <symbol id="icon-star">
-      <rect class="icon-star-background" width="20" height="20" fill="currentColor"/>
-      <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </symbol>
-    <clipPath id="icon-star-clip">
-      <path d="M10 3L12.163 7.60778L17 8.35121L13.5 11.9359L14.326 17L10 14.6078L5.674 17L6.5 11.9359L3 8.35121L7.837 7.60778L10 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </clipPath>
-  </svg>
-  {% comment %}Inject icon-star-symbol end{% endcomment %}
-
   {% comment %}Inject css-variables begin{% endcomment %}
   {% style %}
     :root {

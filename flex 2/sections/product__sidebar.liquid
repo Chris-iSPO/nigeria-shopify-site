@@ -99,9 +99,9 @@
 
         {% elsif block.type == 'search' %}
           {% comment %} Search {% endcomment %}
-          {%
-            render 'sidebar__search',
-            block: block,
+          {% render 'sidebar__search',
+                  block: block,
+                  context: 'sidebar'
           %}
 
         {% elsif block.type == 'tag_list' %}

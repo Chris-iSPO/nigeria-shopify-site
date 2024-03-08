@@ -10,7 +10,7 @@ window.PXUTheme.jsMegaMenu = {
     const sectionId = this.section_id;
     const $megaMenu = $section.find('.mega-menu__' + sectionId);
     const $parentElement = $('.header__menu [data-navlink-handle="' + parentLink + '"], .sticky-header__menu [data-navlink-handle="' + parentLink + '"]');
-    const $parentElementLink = $parentElement.find('.header__link');
+    const $parentElementLink = $parentElement.children('.header__link');
     // Remove old mega menus
     $parentElement.find('.mega-menu__section').remove();
 

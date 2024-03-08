@@ -170,9 +170,9 @@
 
               {% elsif block.type == 'search' %}
                 {% comment %} Search {% endcomment %}
-                {%
-                  render 'sidebar__search',
-                  block: block,
+                {% render 'sidebar__search',
+                        block: block,
+                        context: 'sidebar'
                 %}
 
               {% elsif block.type == 'tag_filter' and has_faceted_filtering_block == false %}
@@ -204,18 +204,7 @@
 
     {% paginate collection.products by section.settings.pagination_limit %}
 
-    <div
-      class="
-        collection__main
-        {% if section.blocks.size > 0 and section.settings.show_sidebar %}
-          three-fourths
-          medium-down--one-whole
-          column
-          equal-columns--outside-trim
-        {% endif %}
-      "
-      data-collection-main
-    >
+    <div class="collection__main {% if section.blocks.size > 0 and section.settings.show_sidebar %}three-fourths medium-down--one-whole column equal-columns--outside-trim{% endif %}" data-collection-main>
       {% if section.settings.show_promo_banner %}
         <div class="collection-promo-banner container">
           <div class="banner__wrapper
@@ -225,11 +214,10 @@
                       is-{{ section.settings.banner_height }}
                       has-margin-bottom">
             {% if section.settings.image != blank %}
-              {%
-                render 'image-element',
-                image: section.settings.image,
-                alt: section.settings.image.alt,
-                focal_point: section.settings.image.presentation.focal_point,
+              {% render 'image-element',
+                      image: section.settings.image,
+                      alt: section.settings.image.alt,
+                      stretch_width: true
               %}
             {% else %}
               {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}

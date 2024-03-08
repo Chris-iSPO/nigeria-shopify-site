@@ -1,7 +1,5 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/* eslint-disable */
-
 window.PXUTheme.jsAjaxCart = {
   init: function ($section) {
 
@@ -160,11 +158,6 @@ window.PXUTheme.jsAjaxCart = {
   },
   addToCart: function ($addToCartForm) {
     const $addToCartBtn = $addToCartForm.find('.button--add-to-cart');
-    this.recipientForm = $addToCartForm[0].querySelector('[data-recipient-form]');
-
-    if (this.recipientForm) {
-      this.recipientForm.classList.remove('recipient-form--has-errors');
-    }
 
     $addToCartForm.removeClass('shopify-product-form--unselected-error');
 
@@ -208,6 +201,7 @@ window.PXUTheme.jsAjaxCart = {
             .addClass('animated zoomOut');
         },
         success: function (product) {
+
           let $el = $('[data-ajax-cart-trigger]');
 
           $addToCartBtn
@@ -264,18 +258,13 @@ window.PXUTheme.jsAjaxCart = {
           }
 
         },
-        error: XMLHttpRequest => {
-          const response = eval('(' + XMLHttpRequest.responseText + ')');
+        error: function (XMLHttpRequest) {
+          let response = eval('(' + XMLHttpRequest.responseText + ')');
+          response = response.description;
+
+          const cartWarning = `<p class="cart-warning__message animated bounceIn">${response.replace('All 1 ', 'All ')}</p>`;
 
           $('.warning').remove();
-
-          let cartWarning;
-
-          if (response.errors && response.errors.email) {
-            this.recipientForm.classList.add('recipient-form--has-errors');
-          } else {
-            cartWarning = `<p class="cart-warning__message animated bounceIn">${response.description.replace('All 1 ', 'All ')}</p>`;
-          }
 
           $addToCartForm
             .find('.cart-warning')

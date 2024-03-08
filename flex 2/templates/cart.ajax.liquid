@@ -8,38 +8,10 @@
 
 <template data-html="content">
   {% comment %} No items in the cart message {% endcomment %}
-  <div class="ajax-cart__cart-count">
-    <p class="ajax-cart__cart-title">
-      {{ 'cart.general.title' | t }}
-      <span
-        class="ajax-cart__cart-item-count"
-        data-bind="itemCount"
-      >
-        {{- cart.item_count -}}
-      </span>
+  <div class="ajax-cart__empty-cart-message text-align-center {% if cart.item_count > 0 %}is-hidden {% endif %}">
+    <p class="ajax-cart__cart-title has-margin-bottom">{{ 'cart.general.title' | t }}
+      <span class="cart__count--text" data-bind="itemCount" >{{ cart.item_count }}</span>
     </p>
-
-    <div
-      class="ajax-cart__close-icon"
-      data-ajax-cart-close
-    >
-      {%
-        render 'icon',
-        name: 'x',
-      %}
-    </div>
-  </div>
-
-  <div
-    class="
-      ajax-cart__empty-cart-message
-      text-align-center
-      has-margin-top
-      {% if cart.item_count > 0 %}
-        is-hidden
-      {% endif %}
-    "
-  >
     {%
       render 'icon',
       name: settings.cart_icon
@@ -47,9 +19,11 @@
     <p class="ajax-cart__empty-text">{{ 'layout.general.empty_cart' | t }}</p>
     <a href="{{ routes.all_products_collection_url }}">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
   </div>
-
   <form action="{{ routes.cart_url }}" method="post"
           class="ajax-cart__form {% if cart.item_count == 0 %}is-hidden{% endif %}">
+    <div class="ajax-cart__cart-count text-align-center">
+      <p class="ajax-cart__cart-title">{{ 'cart.general.title' | t }} <span class="cart__count--text" data-bind="itemCount" >{{ cart.item_count }}</span></p>
+    </div>
     <div class="ajax-cart__list">
       {% assign total_saving = 0 %}
 
@@ -94,8 +68,7 @@
             <div class="ajax-cart__line-items">
               {% if item.properties %}
                 {% for p in item.properties %}
-                  {% assign property_first_char = p.first | slice: 0 %}
-                  {% if p.last != blank and property_first_char != '_' %}
+                  {% if p.last != blank %}
                     <div class="ajax-cart__line-item">
                       {{ p.first }}: {{ p.last }}
                     </div>

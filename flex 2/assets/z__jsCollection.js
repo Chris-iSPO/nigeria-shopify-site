@@ -189,6 +189,10 @@ window.PXUTheme.jsCollection = {
 
       window.history && window.history.pushState && window.history.pushState("", "", filterURL);
 
+      if(window.PXUTheme.theme_settings.enable_shopify_collection_badges == true) {
+        window.PXUTheme.productReviews();
+      }
+
       // Initiate infinite scrolling on new products appended to collection grid
       if ($('[data-custom-pagination]').length) {
         window.PXUTheme.infiniteScroll.init();

@@ -9,11 +9,11 @@
 {%- assign locale_selector = false -%}
 {%- assign currency_selector = false -%}
 
-{%- if object.settings.show_currency_selector and shop.enabled_currencies.size > 1 or localization.available_countries.size > 1 -%}
+{%- if object.settings.show_currency_selector == true and shop.enabled_currencies.size > 1 -%}
   {%- assign currency_selector = true -%}
 {%- endif -%}
 
-{%- if object.settings.show_locale_selector and shop.published_locales.size > 1 -%}
+{%- if object.settings.show_locale_selector == true and shop.published_locales.size > 1 -%}
   {%- assign locale_selector = true -%}
 {%- endif -%}
 
@@ -31,24 +31,14 @@
     %}
   </div>
 
-  {% if display_search %}
-    <a
-      class="
-        header__link
-        action-area__link
-      "
-      data-show-search-trigger
-      tabindex="0"
-    >
-      {%
-        render 'icon',
-        name: 'search',
-        icon_class: 'header__icon',
+  {% if object.settings.display_search or header_icon_class == 'header__icons--sticky' %}
+    {% comment %} Search icon {% endcomment %}
+    <a class="header__link action-area__link" data-show-search-trigger tabindex="0">
+      {% render 'icon',
+              name: 'search',
+              icon_class: 'header__icon'
       %}
-
-      <span class="icon-caption">
-        {{- 'general.search.title' | t | escape -}}
-      </span>
+      <span class="icon-caption">{{ 'general.search.title' | t | escape }}</span>
     </a>
   {% endif %}
 

@@ -43,48 +43,6 @@
       "tags_html": "Marqué \"{{ tags }}\""
     }
   },
-  "recipient": {
-    "form": {
-      "checkbox_label": "Je souhaite envoyer ceci en cadeau",
-      "email_label": "Adresse e-mail du destinataire",
-      "email_placeholder": "Adresse e-mail du destinataire *",
-      "error_message": "L'adresse e-mail n'est pas valide",
-      "name_label": "Nom du destinataire (facultatif)",
-      "name_placeholder": "Nom du destinataire (facultatif)",
-      "message_label": "Message (facultatif)",
-      "message_placeholder": "Message (facultatif)",
-      "max_characters": "Maximum de {{ max_characters }} caractères"
-    }
-  },
-  "sections": {
-    "complementary_product_block": {
-      "from": "De",
-      "now": "À présent",
-      "price_per_unit_html": "{{ total_quantity }} | {{ unit_price }} / {{ unit_measure }}",
-      "view_details": "Voir le produit"
-    }
-  },
-  "age_gate": {
-    "form": {
-      "confirm": "Confirmez l'âge et passez à {{ shop }}",
-      "error": "L'accès à l'atelier est limité à l'âge des adultes {{ age }} et plus.",
-      "day": "Jour",
-      "month": "Mois",
-      "year": "An",
-      "january": "Janvier",
-      "february": "Février",
-      "march": "Mars",
-      "april": "Avril",
-      "may": "Peut",
-      "june": "Juin",
-      "july": "Juillet",
-      "august": "Août",
-      "september": "Septembre",
-      "october": "Octobre",
-      "november": "Novembre",
-      "december": "Décembre"
-    }
-  },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
   },
@@ -93,11 +51,6 @@
       "title": "Page introuvable",
       "subtext": "Nous sommes désolés, la page que vous avez demandée n'existe pas.",
       "continue_shopping_html": "Essayez de faire une recherche ou <a href=\"{{ continue_link }}\">poursuivez vos achats →</a>"
-    },
-    "accessibility": {
-      "star_review_text": "Examen",
-      "star_reviews_text": "Commentaires",
-      "star_reviews_info": "{{ rating_value }} hors de {{ rating_max }} étoiles"
     },
     "pagination": {
       "previous": "Précédent",
@@ -117,7 +70,7 @@
       "signup_form_success": "Nous vous enverrons un e-mail à droite avant d'ouvrir!",
       "admin_link_html": "Êtes-vous le propriétaire de la boutique? <a href=\"/admin\" class=\"text-link\">Connectez-vous ici</a>.",
       "password_link": "Entrer avec un mot de passe",
-      "powered_by_shopify_html": "Cette boutique sera propulsée <a href=\"https://shopify.pxf.io/pixel-union\" target=\"_blank\">Shopify</a>"
+      "powered_by_shopify_html": "Cette boutique sera propulsée <a href=\"https://www.shopify.com/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify</a>"
     },
     "meta": {
       "tagged_html": "Étiqueté \"{{ tags }}\"",
@@ -146,19 +99,15 @@
     "search": {
       "title": "Recherche",
       "description": "Recherchez un produit dans notre boutique",
-      "no_results_html": "Vérifiez l'orthographe ou utilisez un mot ou une phrase différent.",
+      "no_results_html": "Votre recherche de \"{{ terms }}\" n'a donné aucun résultat.",
       "advanced_search_html": "Recherche avancée →",
-      "suggestions": "Suggestions",
+      "top_suggestions": "Meilleures suggestions",
       "no_results": "Aucun résultat trouvé.",
-      "search_for": "Recherche \"{{ search_terms }}\"",
-      "products": "Des produits",
-      "pages": "Pages",
-      "posts": "Publications",
-      "pages_and_posts": "Pages et publications",
+      "all_results": "Tous les résultats",
       "results_count": {
-        "zero": "{{ count }} résultat pour \"{{ search_terms }}\"",
-        "one": "{{ count }} résultat pour \"{{ search_terms }}\"",
-        "other": "{{ count }} résultats pour \"{{ search_terms }}\""
+        "zero": "{{ count }} résultat",
+        "one": "{{ count }} résultat",
+        "other": "{{ count }} résultats"
       },
       "placeholder": "",
       "placeholder_with_shop_name": "Rechercher dans {{ shop_name }}...",
@@ -187,7 +136,8 @@
     "sidebar": {
       "recent_articles": "Articles récents",
       "categories": "Catégories",
-      "follow_us": "Suivez-nous"
+      "follow_us": "Suivez-nous",
+      "follow_shop": "Suivez {{ shop_name }} sur Twitter"
     },
     "article": {
       "read_time": "min lu",
@@ -242,7 +192,7 @@
       "pre_order": "Pré-Commande",
       "sale": "Soldes",
       "view_all": "Voir tout",
-      "view_product_details": "Voir la description complète du produit",
+      "view_product_details_html": "Voir la description complète du produit",
       "sold_out": "Épuisé"
     },
     "sidebar": {
@@ -288,6 +238,7 @@
       "collections": "Collections",
       "product_types": "Types de produits",
       "tags": "Catégorie",
+      "size_chart": "Tableau des Tailles",
       "savings": "Économisez",
       "products_tagged": "Produits étiquetés comme {{ tag }}",
       "items_left_count": {
@@ -327,8 +278,7 @@
       "title": "Mon compte",
       "details": "Paramètres du compte",
       "view_addresses": "Voir les adresses",
-      "return": "Retourner aux paramètres du compte",
-      "primary_address": "Adresse principale"
+      "return": "Retourner aux paramètres du compte"
     },
     "orders": {
       "title": "Historique des commandes",
@@ -543,7 +493,8 @@
     },
     "social_sharing": {
       "title": "Partager",
-      "x_title": "Partagez ceci sur X",
+      "twitter_share": "Jetez un œil sur {{ title }} de {{ name }}: {{ current_url }}",
+      "twitter_title": "Partagez ceci sur Twitter",
       "facebook_title": "Partagez ceci sur Facebook",
       "pinterest_title": "Partagez ceci sur Pinterest",
       "pinterest_share": "{{ title }} de {{ name }}",

@@ -175,10 +175,10 @@
     </li>
   {% endif %}
 
-  {% if settings.x_link != '' %}
+  {% if settings.twitter_link != '' %}
     <li>
-      <a href="{{ settings.x_link }}" title="{{ shop.name }} on X" rel="me" target="_blank"  rel="noopener" class="icon-x">
-        {% render 'icon', name: 'x-social' %}
+      <a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" rel="me" target="_blank"  rel="noopener" class="icon-twitter">
+        {% render 'icon', name: 'twitter' %}
       </a>
     </li>
   {% endif %}

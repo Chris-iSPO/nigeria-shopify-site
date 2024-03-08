@@ -32,11 +32,6 @@
       "subtext": "Lamentamos, mas a página que solicitou não existe.",
       "continue_shopping_html": "Tente pesquisar ou <a href=\"{{ continue_link }}\">continuar a comprar →</a>"
     },
-    "accessibility": {
-      "star_review_text": "Análise",
-      "star_reviews_text": "Avaliações",
-      "star_reviews_info": "{{ rating_value }} fora de {{ rating_max }} estrelas"
-    },
     "pagination": {
       "previous": "Anterior",
       "next": "Próximo",
@@ -55,7 +50,7 @@
       "signup_form_success": "Iremos enviar-lhe um e-mail para a direita antes de abrirmos!",
       "admin_link_html": "É o dono da loja? <a href=\"/admin\" class=\"text-link\">Inicie sessão aqui</a>",
       "password_link": "Entre usando a palavra-passe",
-      "powered_by_shopify_html": "Esta loja será movida <a href=\"https://shopify.pxf.io/pixel-union\" target=\"_blank\">Shopify</a>"
+      "powered_by_shopify_html": "Esta loja será movida <a href=\"https://www.shopify.com/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify</a>"
     },
     "meta": {
       "tagged_html": "Marcado \"{{ tags }}\"",
@@ -84,19 +79,15 @@
     "search": {
       "title": "Pesquisar",
       "description": "Pesquisar tudo na loja.",
-      "no_results_html": "Verifique a ortografia ou use uma palavra ou frase diferente.",
+      "no_results_html": "A sua pesquisa para \"{{ terms }}\" não coincidiu com quaisquer resultados.",
       "advanced_search_html": "Pesquisa Avançada →",
-      "suggestions": "Sugestões",
+      "top_suggestions": "Melhores sugestões",
       "no_results": "Não foram encontrados resultados.",
-      "search_for": "Pesquise \"{{ search_terms }}\"",
-      "products": "Produtos",
-      "pages": "Páginas",
-      "posts": "Publicações",
-      "pages_and_posts": "Páginas e publicações",
+      "all_results": "Ver todos os resultados",
       "results_count": {
-        "zero": "{{ count }} resultados para \"{{ search_terms }}\"",
-        "one": "{{ count }} resultado para \"{{ search_terms }}\"",
-        "other": "{{ count }} resultados para \"{{ search_terms }}\""
+        "zero": "{{ count }} resultados",
+        "one": "{{ count }} resultado",
+        "other": "{{ count }} resultados"
       },
       "placeholder": "",
       "placeholder_with_shop_name": "Pesquisar {{ shop_name }}...",
@@ -125,7 +116,8 @@
     "sidebar": {
       "recent_articles": "Artigos Recentes",
       "categories": "Categorias",
-      "follow_us": "Siga-Nos"
+      "follow_us": "Siga-Nos",
+      "follow_shop": "Siga a {{ shop_name }} no Twitter"
     },
     "article": {
       "read_time": "min ler",
@@ -180,7 +172,7 @@
       "pre_order": "Para Encomendar",
       "sale": "Saldos",
       "view_all": "Ver Tudo",
-      "view_product_details": "Ver informação pormenorizada do produto",
+      "view_product_details_html": "Ver informação pormenorizada do produto",
       "sold_out": "Vendido"
     },
     "sidebar": {
@@ -226,6 +218,7 @@
       "collections": "Colecções",
       "product_types": "Tipo",
       "tags": "Categoria",
+      "size_chart": "Guia de tamanho",
       "savings": "Você economiza",
       "products_tagged": "Produtos marcados {{ tag }}",
       "items_left_count": {
@@ -265,8 +258,7 @@
       "title": "A Minha Conta",
       "details": "Detalhes da Conta",
       "view_addresses": "Ver Moradas",
-      "return": "Voltar aos Detalhes da Conta",
-      "primary_address": "Endereço primário"
+      "return": "Voltar aos Detalhes da Conta"
     },
     "orders": {
       "title": "Histórico de Encomendas",
@@ -481,7 +473,8 @@
     },
     "social_sharing": {
       "title": "Partilhar",
-      "x_title": "Compartilhe isso no X",
+      "twitter_share": "Veja {{ title }} de {{ name }}: {{ current_url }}",
+      "twitter_title": "Partilhe isto no Twitter",
       "facebook_title": "Partilhe isto no Facebook",
       "pinterest_title": "Partilhe isto no Pinterest",
       "pinterest_share": "{{ title }} from {{ name }}",

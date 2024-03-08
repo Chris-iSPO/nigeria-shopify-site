@@ -2,11 +2,9 @@
 ** Logo list **
 {% endcomment %}
 
-{% liquid
-  # Is the color set to transparent?
-  assign background_alpha = section.settings.background | color_extract: 'alpha'
-  assign gradient_alpha = section.settings.gradient | color_extract: 'alpha'
-%}
+{% comment %} Is the color set to transparent? {% endcomment %}
+{%- assign background_alpha = section.settings.background | color_extract: 'alpha' -%}
+{%- assign gradient_alpha = section.settings.gradient | color_extract: 'alpha' -%}
 
 {% comment %} Section specific CSS {% endcomment %}
 {% capture section_css -%}
@@ -19,72 +17,54 @@
 {% style %}
   #shopify-section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
-    padding-right: {{ section.settings.padding_right }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
     padding-left: {{ section.settings.padding_left }}px;
-
+    padding-right: {{ section.settings.padding_right }}px;
     {% if section.settings.width == 'wide' %}
       width: 100%;
-    {% elsif section.settings.width == 'half'  %}
+    {% elsif section.settings.width == 'half' %}
       width: 50%;
     {% endif %}
   }
-
-  @media only screen and (max-width: 798px) {
-    #shopify-section-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-    }
-  }
-
-  {%
-    render 'css-loop',
-    css: section_css,
-    id: section.id,
+  {% render 'css-loop',
+          css: section_css,
+          id: section.id
   %}
-
-  {%
-    render 'css-loop',
-    css: section.settings.custom_css,
-    id: section.id,
+  {% render 'css-loop',
+          css: section.settings.custom_css,
+          id: section.id
   %}
 {% endstyle %}
 
-<section
-  class="
-    section
-    {{ section.settings.css_class }}
-    is-width-{{ section.settings.width }}
-    {% if background_alpha != 0 or gradient_alpha != 0  %}
-      has-background
-    {% endif %}
-  "
-  {% if section.settings.animation != "none" %}
-    data-scroll-class="{{ section.settings.animation }}"
-  {% endif %}
->
-  <div
-    class="
-      container
-      has-column-padding-bottom
-      is-justify-center
-      is-align-center
-      small-down--has-limit
-      is-{{ section.settings.logo_size }}
-      logo-list__wrapper
-    "
-  >
+{% comment %} HTML markup {% endcomment %}
+<section class="section
+                {{ section.settings.css_class }}
+                is-width-{{ section.settings.width }}
+                {% if background_alpha != 0 or gradient_alpha != 0  %}
+                  has-background
+                {% endif %}
+                "
+                {% if section.settings.animation != "none" %}
+                  data-scroll-class="{{ section.settings.animation }}"
+                {% endif %}>
+  <div class="container
+              has-column-padding-bottom
+              is-justify-center
+              is-align-center
+              small-down--has-limit
+              is-{{ section.settings.logo_size }}
+              logo-list__wrapper
+              ">
     {% if section.blocks.size > 0 %}
       {% for block in section.blocks %}
+
         {% comment %}Add number to id for each loop{% endcomment %}
         {% capture image %}image{{ index }}{% endcapture %}
         {% capture link %}link{{ index }}{% endcapture %}
 
-        {% assign image = block.settings[image] %}
+        {%- assign image = block.settings[image] -%}
 
-        <div
-          class="
-            logo-list__item
+          <div class="logo-list__item
             small-down--one-half
             column
             {% if section.settings.logos_per_row == 1 %}
@@ -103,35 +83,28 @@
               one-seventh
             {% elsif section.settings.logos_per_row == 8 %}
               one-eighth
+            {% endif %}" {% if type != 'block' %}{{ block.shopify_attributes }}{% endif %}>
+            {% if block.settings[link] != blank %}
+              <a href="{{ block.settings[link] }}" class="logo-list__link">
             {% endif %}
-          "
-          {% if type != 'block' %}
-            {{ block.shopify_attributes }}
-          {% endif %}
-        >
-          {% if block.settings[link] != blank %}
-            <a href="{{ block.settings[link] }}" class="logo-list__link">
-          {% endif %}
-
-          {% if image != blank %}
-            {%
-              render 'image-element',
-              image: image,
-              alt: image.alt,
-              focal_point: image.presentation.focal_point,
-            %}
-          {% else %}
-            {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
-          {% endif %}
-
-          {% if block.settings[link] != blank %}
-            </a>
-          {% endif %}
-        </div>
+            {% if image != blank %}
+              {%- assign alt_text = image.alt -%}
+              {% render 'image-element',
+                      image: image,
+                      alt: alt_text
+              %}
+            {% else %}
+              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            {% if block.settings[link] != blank %}
+              </a>
+            {% endif %}
+          </div>
       {% endfor %}
     {% endif %}
   </div>
 </section>
+
 
 {% schema %}
   {
@@ -151,7 +124,7 @@
         "type": "select",
         "id": "logo_size",
         "label": "Logo size",
-        "info": "Applies to desktop only.",
+        "default": "medium",
         "options": [
           {
             "value": "small",
@@ -165,8 +138,7 @@
             "value": "large",
             "label": "Large"
           }
-        ],
-        "default": "medium"
+        ]
       },
       {
         "type": "header",
@@ -181,7 +153,7 @@
       {
         "type": "color",
         "id": "gradient",
-        "label": "Background gradient",
+        "label": "Gradient",
         "default": "rgba(0,0,0,0)"
       },
       {
@@ -296,28 +268,6 @@
       },
       {
         "type": "header",
-        "content": "Mobile layout"
-      },
-      {
-        "type": "range",
-        "id": "padding_top_mobile",
-        "label": "Mobile top spacing",
-        "min": 0,
-        "max": 80,
-        "default": 20,
-        "unit": "px"
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_mobile",
-        "label": "Mobile bottom spacing",
-        "min": 0,
-        "max": 80,
-        "default": 0,
-        "unit": "px"
-      },
-      {
-        "type": "header",
         "content": "Advanced"
       },
       {
@@ -376,11 +326,6 @@
           }
         ]
       }
-    ],
-    "disabled_on": {
-      "groups": [
-        "*"
-      ]
-    }
+    ]
   }
 {% endschema %}
