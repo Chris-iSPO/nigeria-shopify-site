@@ -43,48 +43,6 @@
       "tags_html": "Markiert \"{{ tags }}\""
     }
   },
-  "recipient": {
-    "form": {
-      "checkbox_label": "Ich möchte dies als Geschenk versenden",
-      "email_label": "E-Mail-Adresse des Empfängers",
-      "email_placeholder": "E-Mail-Adresse des Empfängers *",
-      "error_message": "Die E-Mail ist nicht gültig",
-      "name_label": "Name des Empfängers (optional)",
-      "name_placeholder": "Name des Empfängers (optional)",
-      "message_label": "Nachricht (optional)",
-      "message_placeholder": "Nachricht (optional)",
-      "max_characters": "Maximal {{ max_characters }} Zeichen"
-    }
-  },
-  "sections": {
-    "complementary_product_block": {
-      "from": "Aus",
-      "now": "Jetzt",
-      "price_per_unit_html": "{{ total_quantity }} | {{ unit_price }} / {{ unit_measure }}",
-      "view_details": "Produkt anzeigen"
-    }
-  },
-  "age_gate": {
-    "form": {
-      "confirm": "Bestätigen Sie das Alter und fahren Sie mit {{ shop }} fort",
-      "error": "Shop Access ist auf Erwachsene Alter {{ age }} und älter beschränkt.",
-      "day": "Tag",
-      "month": "Monat",
-      "year": "Jahr",
-      "january": "Januar",
-      "february": "Februar",
-      "march": "Marsch",
-      "april": "April",
-      "may": "Kann",
-      "june": "Juni",
-      "july": "Juli",
-      "august": "August",
-      "september": "September",
-      "october": "Oktober",
-      "november": "November",
-      "december": "Dezember"
-    }
-  },
   "date_formats": {
     "month_day_year": "%B %d, %Y"
   },
@@ -93,11 +51,6 @@
       "title": "Seite nicht gefunden",
       "subtext": "Es tut uns Leid, aber die von Ihnen angeforderte Seite existiert nicht.",
       "continue_shopping_html": "Suchen Sie oder <a href=\"{{ continue_link }}\">kaufen Sie weiter ein →</a>"
-    },
-    "accessibility": {
-      "star_review_text": "Rezension",
-      "star_reviews_text": "Bewertungen",
-      "star_reviews_info": "{{ rating_value }} aus {{ rating_max }} sterne"
     },
     "pagination": {
       "previous": "Vorheriger",
@@ -117,7 +70,7 @@
       "signup_form_success": "Wir werden Ihnen eine E-Mail kurz bevor wir öffnen!",
       "admin_link_html": "Sind Sie der Geschäftsinhaber? <a href=\"/admin\" class=\"text-link\">Melden Sie sich hier an</a>",
       "password_link": "Mit Passwort betreten",
-      "powered_by_shopify_html": "Dieser Shop wird mit Hilfe von <a href=\"https://shopify.pxf.io/pixel-union\" target=\"_blank\">Shopify</a> betrieben werden"
+      "powered_by_shopify_html": "Dieser Shop wird mit Hilfe von <a href=\"https://www.shopify.com/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify</a> betrieben werden"
     },
     "meta": {
       "tagged_html": "Getaggt \"{{ tags }}\"",
@@ -146,19 +99,15 @@
     "search": {
       "title": "Suchen",
       "description": "Suche in unserem Shop.",
-      "no_results_html": "Überprüfen Sie die Rechtschreibung oder verwenden Sie ein anderes Wort oder eine andere Phrase.",
+      "no_results_html": "Ihre Suche nach \"{{ terms }}\" hat keine Ergebnisse gebracht.",
       "advanced_search_html": "Erweiterte Suche →",
-      "suggestions": "Vorschläge",
+      "top_suggestions": "Top Vorschläge",
       "no_results": "Keine Ergebnisse gefunden.",
-      "search_for": "Suche nach \"{{ search_terms }}\"",
-      "products": "Produkte",
-      "pages": "Seiten",
-      "posts": "Beiträge",
-      "pages_and_posts": "Seiten & Beiträge",
+      "all_results": "Bekijk alle resultaten",
       "results_count": {
-        "zero": "{{ count }} Ergebnisse für \"{{ search_terms }}\"",
-        "one": "{{ count }} Ergebnis für \"{{ search_terms }}\"",
-        "other": "{{ count }} Ergebnisse für \"{{ search_terms }}\""
+        "zero": "{{ count }} Ergebnisse",
+        "one": "{{ count }} Ergebnis",
+        "other": "{{ count }} Ergebnisse"
       },
       "placeholder": "",
       "placeholder_with_shop_name": "Suche {{ shop_name }}...",
@@ -187,7 +136,8 @@
     "sidebar": {
       "recent_articles": "Aktuelle Artikel",
       "categories": "Kategorien",
-      "follow_us": "Folgen Sie uns"
+      "follow_us": "Folgen Sie uns",
+      "follow_shop": "Folgen Sie {{ shop_name }} auf Twitter"
     },
     "article": {
       "read_time": "minimum gelesen",
@@ -243,7 +193,7 @@
       "pre_order": "Vorbestellung",
       "sale": "Sale",
       "view_all": "Alles anzeigen",
-      "view_product_details": "Vollständige Produkt-Details anzeigen",
+      "view_product_details_html": "Vollständige Produkt-Details anzeigen",
       "sold_out": "Ausverkauft"
     },
     "sidebar": {
@@ -289,6 +239,7 @@
       "collections": "Kollektionen",
       "product_types": "Typ",
       "tags": "Kategorie",
+      "size_chart": "Größentabelle",
       "savings": "Je bespaart",
       "products_tagged": "Produkte getaggt {{ tag }}",
       "items_left_count": {
@@ -328,8 +279,7 @@
       "title": "Mein Konto",
       "details": "Konto-Details",
       "view_addresses": "Adressen anzeigen",
-      "return": "Zurück zu Konto-Details",
-      "primary_address": "Hauptadresse"
+      "return": "Zurück zu Konto-Details"
     },
     "orders": {
       "title": "Auftragshistorie",
@@ -544,7 +494,8 @@
     },
     "social_sharing": {
       "title": "Teilen",
-      "x_title": "Teilen Sie dies auf X",
+      "twitter_share": "Abmelden {{ title }} von {{ name }}: {{ current_url }}",
+      "twitter_title": "Auf Twitter teilen",
       "facebook_title": "Auf Facebook teilen",
       "pinterest_title": "Auf Pinterest teilen",
       "pinterest_share": "{{ title }} von {{ name }}",

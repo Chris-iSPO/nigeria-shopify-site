@@ -1,0 +1,58 @@
+<html>
+  <style>
+    body {
+      text-align: center;
+      background: #FFF;
+      font-family: "Helvetica Neue", "Open Sans", helvetica, arial, sans-serif;
+    }
+    #timer {
+      font-size: 4em;
+      font-weight: 400;
+      color: #000;
+      /* text-shadow: 0 0 20px grey; */
+    }
+    #timer div {
+      display: inline-block;
+      min-width: 120px;
+    }
+    #timer div span {
+      color: red;
+      display: block;
+      font-size: 0.2em;
+      font-weight: 400;
+      text-transform:uppercase;
+    }
+  </style>
+
+  <body>
+    <div id="timer"></div>
+
+    <script>
+      function updateTimer() {
+        future  = Date.parse("{{time}}");
+        now     = new Date();
+        diff    = future - now;
+
+        years = Math.floor( diff / (1000*60*60*24*365) );
+        days  = Math.floor( diff / (1000*60*60*24) );
+        hours = Math.floor( diff / (1000*60*60) );
+        mins  = Math.floor( diff / (1000*60) );
+        secs  = Math.floor( diff / 1000 );
+
+        y = years;
+        d = days  - years * 365;
+        h = hours - days  * 24;
+        m = mins  - hours * 60;
+        s = secs  - mins  * 60;
+
+        document.getElementById("timer")
+          .innerHTML =
+            '<div>' + d + '<span>days</span></div>' +
+            '<div>' + h + '<span>hours</span></div>' +
+            '<div>' + m + '<span>minutes</span></div>' +
+            '<div>' + s + '<span>seconds</span></div>' ;
+      }
+      setInterval('updateTimer()', 1000 );
+    </script>
+  </body>
+</html>

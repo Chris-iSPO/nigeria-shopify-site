@@ -43,27 +43,6 @@
       "tags_html": "标记 \"{{ tags }}\""
     }
   },
-  "recipient": {
-    "form": {
-      "checkbox_label": "我想将此作为礼物发送",
-      "email_label": "收件人邮箱",
-      "email_placeholder": "收件人邮箱 *",
-      "error_message": "电子邮件无效",
-      "name_label": "收件人姓名（可选）",
-      "name_placeholder": "收件人姓名（可选）",
-      "message_label": "留言（可选）",
-      "message_placeholder": "留言（可选）",
-      "max_characters": "最多{{ max_characters }}个字符"
-    }
-  },
-  "sections": {
-    "complementary_product_block": {
-      "from": "从",
-      "now": "现在",
-      "price_per_unit_html": "{{ total_quantity }} | {{ unit_price }} / {{ unit_measure }}",
-      "view_details": "查看产品"
-    }
-  },
   "date_formats": {
     "month_day_year": "%月 %日, %年"
   },
@@ -72,11 +51,6 @@
       "title": "找不到页面",
       "subtext": "抱歉，我们找不到你要求的页面",
       "continue_shopping_html": "试试看其他搜寻或<a href=\"{{ continue_link }}\">继续购物</a>"
-    },
-    "accessibility": {
-      "star_review_text": "审查",
-      "star_reviews_text": "评论",
-      "star_reviews_info": "{{ rating_value }} 在之外 {{ rating_max }} 星星"
     },
     "pagination": {
       "previous": "前一篇文章",
@@ -96,7 +70,7 @@
       "signup_form_success": "提交成功! 我们即将在开幕前寄邮件给您",
       "admin_link_html": "你是店主吗?",
       "password_link": "输入密码",
-      "powered_by_shopify_html": "此网页使用<a href=\"https://shopify.pxf.io/pixel-union\" target=\"_blank\">Shopify</a>系统"
+      "powered_by_shopify_html": "此网页使用<a href=\"https://www.shopify.com/?ref=out-of-the-sandbox\" target=\"_blank\">Shopify</a>系统"
     },
     "meta": {
       "tagged_html": "标签语法",
@@ -125,19 +99,15 @@
     "search": {
       "title": "搜寻",
       "description": "输入您想要找的商品",
-      "no_results_html": "检查拼写或使用其他单词或短语。",
+      "no_results_html": " \"{{ terms }}\" ，无任何相关的商品。",
       "advanced_search_html": "进阶搜寻",
-      "suggestions": "建议",
+      "top_suggestions": "热门建议",
       "no_results": "无任相关搜寻结果",
-      "search_for": "搜索\"{{ search_terms }}\"",
-      "products": "产品",
-      "pages": "页面",
-      "posts": "帖子",
-      "pages_and_posts": "页面和帖子",
+      "all_results": "更多",
       "results_count": {
-        "zero": "零 结果 為了 \"{{ search_terms }}\"",
-        "one": "一 结果 為了 \"{{ search_terms }}\"",
-        "other": "其他 结果 為了 \"{{ search_terms }}\""
+        "zero": "零",
+        "one": "一",
+        "other": "其他"
       },
       "placeholder": "",
       "placeholder_with_shop_name": "搜寻{{ shop_name }}...",
@@ -166,7 +136,8 @@
     "sidebar": {
       "recent_articles": "近日文章",
       "categories": "分类",
-      "follow_us": "关注我们"
+      "follow_us": "关注我们",
+      "follow_shop": "在推特上关注{{ shop_name }}"
     },
     "article": {
       "read_time": "最小读",
@@ -221,7 +192,7 @@
       "pre_order": "预购",
       "sale": "促销",
       "view_all": "查看全部",
-      "view_product_details": "看商品全部细节",
+      "view_product_details_html": "看商品全部细节",
       "sold_out": "卖光了"
     },
     "sidebar": {
@@ -268,6 +239,7 @@
       "collections": "分类",
       "product_types": "品项",
       "tags": "类别",
+      "size_chart": "尺寸表",
       "savings": "促销",
       "products_tagged": "商品标签",
       "items_left_count": {
@@ -307,8 +279,7 @@
       "title": "我的账户",
       "details": "账户详细资料",
       "view_addresses": "查看地址",
-      "return": "回到账户详细资料",
-      "primary_address": "主要地址"
+      "return": "回到账户详细资料"
     },
     "orders": {
       "title": "查看订单",
@@ -523,7 +494,8 @@
     },
     "social_sharing": {
       "title": "分享",
-      "x_title": "在x上分享",
+      "twitter_share": "刚刚从{{ name }买了 {{ title }}  }: {{ current_url }}",
+      "twitter_title": "分享至推特",
       "facebook_title": "分享至脸书",
       "pinterest_title": "分享至Pinterest",
       "pinterest_share": "{{ name }}的{{ title }}  ",

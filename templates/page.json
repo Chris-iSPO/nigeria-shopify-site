@@ -1,12 +1,1 @@
-{
-  "name": "Page",
-  "sections": {
-    "main": {
-      "type": "page-content__main",
-      "settings": {}
-    }
-  },
-  "order": [
-    "main"
-  ]
-}
+{"sections":{"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":false,"heading_alignment":"left","width":"standard","padding_top":0,"padding_bottom":0,"css_class":"","custom_css":""}},"5b298a32-3a20-45cf-9dd7-2374f02a281e":{"type":"index__image-with-text","blocks":{"template--16110844969185__5b298a32-3a20-45cf-9dd7-2374f02a281e-1675963542e802c835-0":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/istore_cga_valentines.png","image_crop":"none","image_link":""}},"template--16110844969185__5b298a32-3a20-45cf-9dd7-2374f02a281e-1675963542e802c835-2":{"type":"text","settings":{"title":"Heading text here","heading_size":"regular","text":"<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>","button_label":"View all","link":"","button_style":"button--primary","background":"rgba(0,0,0,0)","text_color":"rgba(0,0,0,0)","alignment":"left","vertical_position":"center"}}},"block_order":["template--16110844969185__5b298a32-3a20-45cf-9dd7-2374f02a281e-1675963542e802c835-0","template--16110844969185__5b298a32-3a20-45cf-9dd7-2374f02a281e-1675963542e802c835-2"],"settings":{"width":"standard","show_gutter":true,"padding_top":20,"padding_bottom":20,"animation":"none","css_class":"","custom_css":""}}},"order":["main","5b298a32-3a20-45cf-9dd7-2374f02a281e"]}

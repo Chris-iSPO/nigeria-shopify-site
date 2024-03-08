@@ -50,33 +50,28 @@
   </header>
 
   <div class="container">
-    <div class="one-whole column" data-autocomplete-{{ settings.enable_autocomplete }}>
-      <div class="content">
-        {% if section.settings.not_found_text == '' %}
-          <p>
-            {{- 'general.404.continue_shopping_html' | t: continue_link: routes.all_products_collection_url -}}
-          </p>
-        {% else %}
-          {{- section.settings.not_found_text -}}
-        {% endif %}
-      </div>
+    <div class="one-whole column content" data-autocomplete-{{ settings.enable_autocomplete }}>
+      {% if section.settings.not_found_text == '' %}
+        <p>{{ 'general.404.continue_shopping_html' | t: continue_link: routes.all_products_collection_url }}</p>
+      {% else %}
+        {{ section.settings.not_found_text }}
+      {% endif %}
 
       {% if section.settings.display_search_field %}
         <form class="search-form" action="{{ routes.search_url }}">
           <div class="search__fields">
-            <label for="q" class="visually-hidden">{{ settings.search_placeholder }}</label>
+            <input type="hidden" name="type" value="{{ settings.search_option }}" />
+            <label for="q" class="visuallyhidden">{{ settings.search_placeholder }}</label>
             <div class="field">
               <div class="control has-icons-left">
                 <input class="input" type="text" name="q" placeholder="{{ settings.search_placeholder }}" value="{{ search.terms }}" x-webkit-speech autocapitalize="off" autocomplete="off" autocorrect="off" data-q/>
-                <button type="submit" name="search" >
-                  {%
-                    render 'icon',
-                    name: 'search',
-                    class: 'icon is-left',
-                  %}
-                </button>
+                {% render 'icon',
+                        name: 'search',
+                        class: 'icon is-left'
+                %}
               </div>
             </div>
+            <input type="submit" name="search" class="visuallyhidden" value="" />
           </div>
         </form>
       {% endif %}

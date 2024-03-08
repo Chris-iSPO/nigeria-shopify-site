@@ -1,11 +1,11 @@
 {%- assign locale_selector = false -%}
 {%- assign currency_selector = false -%}
 
-{%- if settings.show_currency_selector and shop.enabled_currencies.size > 1 or localization.available_countries.size > 1 -%}
+{%- if settings.show_currency_selector == true and shop.enabled_currencies.size > 1 -%}
   {%- assign currency_selector = true -%}
 {%- endif -%}
 
-{%- if settings.show_locale_selector and shop.published_locales.size > 1 -%}
+{%- if settings.show_locale_selector == true and shop.published_locales.size > 1 -%}
   {%- assign locale_selector = true -%}
 {%- endif -%}
 

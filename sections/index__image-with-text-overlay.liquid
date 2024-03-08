@@ -2,54 +2,37 @@
 ** Image with text overlay
 {% endcomment %}
 
-{% liquid
-  assign image = section.settings.image
-  assign link = section.settings.link
-  assign pretext = section.settings.pretext
-  assign pretext_mobile = section.settings.mobile_preheading
-  assign title = section.settings.title
-  assign title_mobile = section.settings.mobile_heading
-  assign subtitle = section.settings.subtitle
-  assign subtitle_mobile = section.settings.mobile_subheading
-  assign button_1 = section.settings.button_1
-  assign button_1_link = section.settings.button_1_link
-  assign button_2 = section.settings.button_2
-  assign button_2_link = section.settings.button_2_link
-  assign mobile_image = section.settings.mobile_image
-  assign mobile_text_below_media = section.settings.mobile_text_below_image
-  assign mobile_preheading_color = section.settings.pretext_color_mobile
-  assign mobile_headline_color = section.settings.heading_color_mobile
-  assign mobile_subtitle_color = section.settings.subheading_color_mobile
+{%- assign image = section.settings.image -%}
+{%- assign link = section.settings.link -%}
+{%- assign pretext = section.settings.pretext -%}
+{%- assign title = section.settings.title -%}
+{%- assign subtitle = section.settings.subtitle -%}
+{%- assign button_1 = section.settings.button_1 -%}
+{%- assign button_1_link = section.settings.button_1_link -%}
+{%- assign button_2 = section.settings.button_2 -%}
+{%- assign button_2_link = section.settings.button_2_link -%}
+{%- assign mobile_image = section.settings.mobile_image -%}
+{%- assign mobile_text_crop = section.settings.mobile_image_crop -%}
+{%- assign mobile_text_below_media = section.settings.mobile_text_below_image -%}
+{%- assign mobile_preheading_color = section.settings.pretext_color_mobile -%}
+{%- assign mobile_headline_color = section.settings.heading_color_mobile -%}
+{%- assign mobile_subtitle_color = section.settings.subheading_color_mobile -%}
 
-  if pretext != blank or title != blank or subtitle != blank
-    assign desktop_text = true
-  else
-    assign desktop_text = false
-  endif
+{% if button_1 != blank and button_2 != blank %}
+  {%- assign buttons = true -%}
+{% else %}
+  {%- assign buttons = false -%}
+{% endif %}
 
-  if pretext_mobile != blank or title_mobile != blank or subtitle_mobile != blank
-    assign mobile_text = true
-  else
-    assign mobile_text = false
-  endif
-
-  if button_1 != blank and button_2 != blank
-    assign buttons = true
-  else
-    assign buttons = false
-  endif
-
-  # Is the color set to transparent?
-
-  assign background_color_alpha = section.settings.background_opacity | divided_by: 100.00
-  assign heading_alpha = section.settings.heading_color | color_extract: 'alpha'
-  assign preheading_alpha = section.settings.pretext_color | color_extract: 'alpha'
-  assign subheading_alpha = section.settings.subheading_color | color_extract: 'alpha'
-  assign mobile_headline_alpha = mobile_headline_color | color_extract: 'alpha'
-  assign mobile_preheading_alpha = mobile_preheading_color | color_extract: 'alpha'
-  assign mobile_subtitle_alpha = mobile_subtitle_color | color_extract: 'alpha'
-  assign caption_border_alpha = section.settings.border_color | color_extract: 'alpha'
-%}
+{% comment %} Is the color set to transparent? {% endcomment %}
+{%- assign background_color_alpha = section.settings.background_opacity | divided_by: 100.00 -%}
+{%- assign heading_alpha = section.settings.heading_color | color_extract: 'alpha' -%}
+{%- assign preheading_alpha = section.settings.pretext_color | color_extract: 'alpha' -%}
+{%- assign subheading_alpha = section.settings.subheading_color | color_extract: 'alpha' -%}
+{%- assign mobile_headline_alpha = mobile_headline_color | color_extract: 'alpha' -%}
+{%- assign mobile_preheading_alpha = mobile_preheading_color | color_extract: 'alpha' -%}
+{%- assign mobile_subtitle_alpha = mobile_subtitle_color | color_extract: 'alpha' -%}
+{%- assign caption_border_alpha = section.settings.border_color | color_extract: 'alpha' -%}
 
 {% comment %} Section specific CSS {% endcomment %}
 {% capture section_css -%}
@@ -89,36 +72,19 @@
     #shopify-section-{{ section.id }} .image-with-text-overlay__subheading {
       color: {% if mobile_subtitle_alpha != 0 %}{{ mobile_subtitle_color}}{% endif %};
     }
-
-    {% if section.settings.text_alignment_mobile != 'same_as_desktop' %}
-      #shopify-section-{{ section.id }} .caption-content {
-        text-align: {{ section.settings.text_alignment_mobile }};
-      }
-    {% endif %}
-
-    #shopify-section-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top_mobile }}px;
-      padding-right: 0;
-      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-      padding-left: 0;
-
-    }
   }
 
   @media only screen and (min-width: 480px) {
-    #shopify-section-{{ section.id }} {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-      padding-left: {{ section.settings.padding_left }}px;
-      padding-right: {{ section.settings.padding_right }}px;
-    }
-
     #shopify-section-{{ section.id }} .caption-content {
       width: {{ section.settings.text_width }}%;
     }
   }
 
   #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_left }}px;
+    padding-right: {{ section.settings.padding_right }}px;
     {% if section.settings.width == 'wide' %}
       width: 100%;
     {% elsif section.settings.width == 'half' %}
@@ -134,72 +100,50 @@
 {% endstyle %}
 
 {% comment %} HTML markup {% endcomment %}
-<section
-  class="
-    section
-    {{ section.settings.css_class }}
-    is-width-{{ section.settings.width }}
-    under-overlay-menu
-    {% if mobile_text_below_media == true %}
-      mobile-text--below-media
-    {% else %}
-      mobile-text--over-media
-    {% endif %}
-    {% if caption_border_alpha != 0 %}
-      has-border
-    {% endif %}
-  "
-  {% if section.settings.animation != "none" %}
-    data-scroll-class="{{ section.settings.animation }}"
-  {% endif %}
->
-  <div
-    class="
-      container
-      image-with-text-overlay__container
-      {% if section.settings.width == 'wide' or section.settings.width == 'half' %}
-        equal-columns--outside-trim
-      {% endif %}
-    "
-  >
-    <div
-      class="
-        image-with-text-overlay__banner
-        columns
-        one-whole
-      "
-    >
+<section class="section
+                {{ section.settings.css_class }}
+                is-width-{{ section.settings.width }}
+                under-overlay-menu
+                {% if mobile_text_below_media == true %}
+                  mobile-text--below-media
+                  {% else %}
+                  mobile-text--over-media
+                {% endif %}
+                {% if caption_border_alpha != 0 %}
+                  has-border
+                {% endif %}
+                "
+                {% if section.settings.animation != "none" %}
+                  data-scroll-class="{{ section.settings.animation }}"
+                {% endif %}>
+  <div class="container
+              image-with-text-overlay__container
+              {% if section.settings.width == 'wide' or section.settings.width == 'half' %}
+                equal-columns--outside-trim
+              {% endif %}">
+    <div class="image-with-text-overlay__banner columns one-whole image-crop-{{ mobile_text_crop }}">
 
-      {% liquid
-        if mobile_image != blank
-          assign hide_mobile = 'is-hidden-mobile-only'
-          assign placeholder_class = 'placeholder-svg is-hidden-mobile-only'
-        else
-          assign placeholder_class = 'placeholder-svg'
-        endif
-      %}
+      {% if mobile_image != blank %}
+        {%- assign hide_mobile = 'is-hidden-mobile-only' -%}
+      {% endif %}
 
       {% if image != blank %}
-        {%
-          render 'image-element',
-          image: image,
-          alt: image.alt,
-          stretch_width: true,
-          additional_wrapper_classes: hide_mobile,
-          focal_point: image.presentation.focal_point,
+        {% render 'image-element',
+                image: image,
+                alt: image.alt,
+                stretch_width: true,
+                additional_classes: hide_mobile
         %}
       {% else %}
-        {{ 'lifestyle-2' | placeholder_svg_tag: placeholder_class }}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
 
       {% if mobile_image != blank %}
         <div class="is-hidden-desktop-only">
-          {%
-            render 'image-element',
-            image: mobile_image,
-            alt: mobile_image.alt,
-            stretch_width: true,
-            focal_point: mobile_image.presentation.focal_point,
+          {% render 'image-element',
+                  image: mobile_image,
+                  alt: mobile_image.alt,
+                  stretch_width: true
           %}
         </div>
       {% endif %}
@@ -208,78 +152,24 @@
         <a href="{{ link }}" class="banner--full-link"></a>
       {% endif %}
 
-      {% if desktop_text or mobile_text or button_1 != blank or button_2 != blank %}
+      {% if pretext != blank or title != blank or subtitle != blank or button_1 != blank or button_2 != blank %}
         <div class="caption text-align-{{ section.settings.text_horizontal_position }} align-{{ section.settings.text_vertical_position }}">
-          <div
-            class="
-              caption-content
-              text-align-{{ section.settings.text_alignment }}
-              {% if desktop_text == false and mobile_text == true and button_1 == blank and button_2 == blank %}
-                is-hidden-small-up
-              {% endif %}
-            "
-          >
-            {% if pretext != blank or pretext_mobile != blank %}
-              <div
-                class="
-                  image-with-text-overlay__preheading
-                  banner__subheading
-                  pretext
-                  subtitle
-                "
-              >
-                {% if pretext != blank %}
-                  <span class="is-hidden-small-down">
-                    {{ pretext }}
-                  </span>
-                {% endif %}
-
-                <span class="is-hidden-small-up">
-                  {{ pretext_mobile | default: pretext }}
-                </span>
+          <div class="caption-content text-align-{{ section.settings.text_alignment }}">
+            {% if pretext != blank %}
+              <div class="image-with-text-overlay__preheading banner__subheading pretext subtitle">
+                {{ pretext }}
               </div>
             {% endif %}
-
-            {% if title != blank or title_mobile != blank %}
-              <h2
-                class="
-                  image-with-text-overlay__heading
-                  banner__heading
-                  title
-                "
-              >
-                {% if title != blank %}
-                  <span class="is-hidden-small-down">
-                    {{ title }}
-                  </span>
-                {% endif %}
-
-                <span class="is-hidden-small-up">
-                  {{ title_mobile | default: title }}
-                </span>
+            {% if title != blank %}
+              <h2 class="image-with-text-overlay__heading banner__heading title">
+                <span>{{ title }}</span>
               </h2>
             {% endif %}
-
-            {% if subtitle != blank or subtitle_mobile != blank %}
-              <div
-                class="
-                  image-with-text-overlay__subheading
-                  banner__subheading
-                  subtitle
-                "
-              >
-                {% if subtitle != blank %}
-                  <span class="is-hidden-small-down">
-                    {{ subtitle }}
-                  </span>
-                {% endif %}
-
-                <span class="is-hidden-small-up">
-                  {{ subtitle_mobile | default: subtitle }}
-                </span>
+            {% if subtitle != blank %}
+              <div class="image-with-text-overlay__subheading banner__subheading subtitle">
+                {{ subtitle }}
               </div>
             {% endif %}
-
             {% if button_1 != blank or button_2 != blank %}
               <div class="image-with-text-overlay__buttons buttons {% unless buttons == true %}is-justify-{{ section.settings.text_alignment }}{% endunless %}">
 
@@ -316,6 +206,12 @@
   "class": "image-with-text-overlay overlaid-header-option",
   "settings": [
     {
+      "type": "url",
+      "id": "link",
+      "label": "Link",
+      "info": "Links entire image"
+    },
+    {
       "type": "header",
       "content": "Image"
     },
@@ -330,12 +226,6 @@
       "id": "mobile_image",
       "label": "Mobile image",
       "info": "900 x 1800px recommended"
-    },
-    {
-      "type": "url",
-      "id": "link",
-      "label": "Background link",
-      "info": "Links entire image"
     },
     {
       "type": "header",
@@ -378,15 +268,29 @@
       "default": "#000000"
     },
     {
-      "type": "text_alignment",
+      "type": "select",
       "id": "text_alignment",
       "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
       "default": "center"
     },
     {
       "type": "select",
       "id": "text_horizontal_position",
-      "label": "Horizontal text position",
+      "label": "Horizontal position",
       "options": [
         {
           "value": "left",
@@ -406,7 +310,7 @@
     {
       "type": "select",
       "id": "text_vertical_position",
-      "label": "Vertical text position",
+      "label": "Vertical position",
       "options": [
         {
           "value": "top",
@@ -424,22 +328,13 @@
       "default": "middle"
     },
     {
-      "type": "range",
-      "id": "text_width",
-      "label": "Text width",
-      "min": 40,
-      "max": 100,
-      "default": 40,
-      "unit": "%"
-    },
-    {
       "type": "header",
       "content": "Text background"
     },
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background color",
+      "label": "Background",
       "default": "#FFFFFF"
     },
     {
@@ -454,7 +349,7 @@
     {
       "type": "color",
       "id": "border_color",
-      "label": "Border color",
+      "label": "Border",
       "default": "#FFFFFF"
     },
     {
@@ -465,6 +360,15 @@
       "max": 20,
       "default": 0,
       "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "text_width",
+      "label": "Text width",
+      "min": 40,
+      "max": 100,
+      "default": 40,
+      "unit": "%"
     },
     {
       "type": "header",
@@ -535,6 +439,58 @@
         }
       ],
       "default": "button--secondary"
+    },
+    {
+      "type": "header",
+      "content": "Mobile"
+    },
+    {
+      "type": "select",
+      "id": "mobile_image_crop",
+      "label": "Image cropping",
+      "default": "none",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_text_below_image",
+      "label": "Show text below image",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "pretext_color_mobile",
+      "label": "Preheading",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_mobile",
+      "label": "Heading",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color_mobile",
+      "label": "Subheading",
+      "default": "rgba(0,0,0,0)"
     },
     {
       "type": "header",
@@ -634,95 +590,6 @@
     },
     {
       "type": "header",
-      "content": "Mobile text"
-    },
-    {
-      "type": "checkbox",
-      "id": "mobile_text_below_image",
-      "label": "Show text below image on mobile",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "mobile_preheading",
-      "label": "Mobile preheading"
-    },
-    {
-      "type": "text",
-      "id": "mobile_heading",
-      "label": "Mobile heading"
-    },
-    {
-      "type": "text",
-      "id": "mobile_subheading",
-      "label": "Mobile subheading"
-    },
-    {
-      "type": "color",
-      "id": "pretext_color_mobile",
-      "label": "Preheading",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "color",
-      "id": "heading_color_mobile",
-      "label": "Heading",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "color",
-      "id": "subheading_color_mobile",
-      "label": "Subheading",
-      "default": "rgba(0,0,0,0)"
-    },
-    {
-      "type": "select",
-      "id": "text_alignment_mobile",
-      "label": "Mobile text alignment",
-      "default": "same_as_desktop",
-      "options": [
-        {
-          "value": "same_as_desktop",
-          "label": "Same as desktop"
-        },
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ]
-    },
-    {
-      "type": "header",
-      "content": "Mobile layout"
-    },
-    {
-      "type": "range",
-      "id": "padding_top_mobile",
-      "label": "Mobile top spacing",
-      "min": 0,
-      "max": 80,
-      "default": 0,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom_mobile",
-      "label": "Mobile bottom spacing",
-      "min": 0,
-      "max": 80,
-      "default": 0,
-      "unit": "px"
-    },
-    {
-      "type": "header",
       "content": "Advanced",
       "info": "[Learn more](https://help.outofthesandbox.com/hc/en-us/articles/360022329373)"
     },
@@ -742,11 +609,6 @@
       "name": "Image with text overlay",
       "category": "Image"
     }
-  ],
-  "disabled_on": {
-    "groups": [
-      "*"
-    ]
-  }
+  ]
 }
 {% endschema %}

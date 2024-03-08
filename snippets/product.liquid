@@ -8,6 +8,7 @@
     @param display_social_buttons
     @param display_thumbnails
     @param enable_product_lightbox
+    @param enable_shopify_review_comments
     @param enable_thumbnail_slider
     @param enable_zoom
     @param gallery_arrows
@@ -59,36 +60,30 @@
     {% endif %}
   </div>
 
-  <div
-    class="
-      product__information
-      has-product-sticker
-      one-half
-      column
-      medium-down--one-whole
-    "
-  >
+  <div class="product__information
+              has-product-sticker
+              one-half
+              column
+              medium-down--one-whole">
+
+    {% comment %} Sale sticker {% endcomment %}
     {% if stickers_enabled %}
       {% assign collection_handles = product.collections | map: 'handle' %}
       {%
         render 'product-thumbnail__sticker',
-        product: product,
         context: 'product',
         collection_handles: collection_handles,
       %}
     {% endif %}
 
     {%- for block in section.blocks -%}
-      <div
-        class="
-          product-block
-          product-block--{{ block.type | downcase | replace: '_', '-' }}
-          {% if forloop.first == true %}
-            product-block--first
-          {% endif %}
-        "
-        {{ block.shopify_attributes }}
-      >
+      <div class="product-block
+                  product-block--{{ block.type | downcase | replace: '_', '-' }}
+                  {% if forloop.first == true %}
+                    product-block--first
+                  {% endif %}"
+                  {{ block.shopify_attributes }}>
+
         {%- if block.type == 'vendor' -%}
           {% comment %} Vendor {% endcomment %}
           <p class="vendor">
@@ -113,8 +108,8 @@
 
         {%- elsif block.type == 'title' -%}
           {% comment %} Name {% endcomment %}
-          <h1 class="product-title title">
-            {% if is_product_modal %}
+          <h1 class="product_name title">
+            {% if section_id == 'quickshop' %}
               <a href="{{ product.url }}">{{ product.title }}</a>
             {% elsif section_onboarding %}
               {{ 'homepage.onboarding.product_title' | t }}
@@ -127,25 +122,19 @@
           {% comment %} Size chart {% endcomment %}
           {% for tag in product.tags %}
             {% if tag contains 'meta-size-chart-' %}
-              {% assign meta_size_chart = true %}
+              {% assign meta-size-chart = true %}
             {% endif %}
           {% endfor %}
 
-          {% if settings.size_chart != blank or block.settings.size_chart != blank or meta_size_chart %}
-            <a
-              class="product__size-chart"
-              href="javascript:;"
-              data-fancybox
-              data-src="#size-chart{{ product.id }}"
-              data-type="inline"
-            >
-              {{ block.settings.title | escape }}
-            </a>
-            {%
-              render 'popup-size-chart',
-              block: block,
-              product_id: product.id,
-            %}
+          {% comment %} Size chart Mobile {% endcomment %}
+          {% if block.settings.size_chart != blank or meta-size-chart %}
+            <a href="javascript:;" class="product__size-chart size-chart--medium-down" data-fancybox data-src="#size-chart{{ product.id }}" data-type="inline">{{ 'products.product.size_chart' | t }} {% render 'icon', name: 'right-caret' %}</a>
+            {% render 'popup-size-chart', product_id: product.id %}
+          {% endif %}
+          {% comment %} Size chart {% endcomment %}
+          {% if block.settings.size_chart != blank or meta-size-chart %}
+            <a href="javascript:;" class="product__size-chart medium-down--hidden" data-fancybox data-src="#size-chart{{ product.id }}" data-type="inline">{{ 'products.product.size_chart' | t }} {% render 'icon', name: 'right-caret' %}</a>
+            {% render 'popup-size-chart', product_id: product.id %}
           {% endif %}
 
         {%- elsif block.type == 'price' -%}
@@ -153,10 +142,6 @@
           <div class="modal_price subtitle" data-display-savings="{{ block.settings.display_savings }}">
             {% if section_onboarding %}
               <span class="money">$49.00</span>
-            {% elsif product.available == false %}
-              <span class="sold_out">
-                {{- 'products.product.sold_out' | t -}}
-              </span>
             {% else %}
               {% comment %}Inject @pixelunion/shopify-price-ui/price-ui begin{% endcomment %}
               <div class="price-ui price-ui--loading" data-price-ui>
@@ -241,56 +226,24 @@
             {% endif %}
           </div>
 
-        {%- elsif block.type == 'complementary_products' -%}
-          {% comment %} Complementary products {% endcomment %}
-          {%
-            render 'complementary-products',
-            product: product,
-            block: block,
-          %}
-
         {%- elsif block.type == 'description' -%}
-          {% liquid
-            if block.settings.product_description != blank
-              assign product_description = block.settings.product_description
-            elsif product.description != blank
-              if is_product_modal and block.settings.truncate_words
-                assign product_description = product.description | strip_html | truncatewords: block.settings.truncate_words_limit | escape | split: '<!-- split -->' | first
-              else
-                assign product_description = product.description | split: '<!-- split -->' | first
-              endif
-            elsif section_onboarding
-              assign product_description = 'homepage.onboarding.product_description' | t
-            endif
-          %}
-
-          <div class="product__description content">
-            <div
-              class="
-                has-padding-top
-                {% if block.settings.mobile_product_description != blank %}
-                  is-hidden-mobile-only
-                {% endif %}
-              "
-            >
-              {{- product_description -}}
+          {% comment %} Description {% endcomment %}
+          {% if block.settings.custom_description != blank %}
+            <div class="description content has-padding-top">
+              {{ block.settings.custom_description }}
             </div>
-
-            {% if block.settings.mobile_product_description != blank %}
-              <div class="is-hidden-desktop-only has-padding-top">
-                {{- block.settings.mobile_product_description -}}
+          {% elsif section_onboarding %}
+            <div class="description content has-padding-top">
+              <p>
+                {{ 'homepage.onboarding.product_description' | t }}
+              </p>
+            </div>
+          {% else %}
+            {% if product.description != blank %}
+              <div class="description content has-padding-top">
+                {{ product.description | split: '<!-- split -->' | first }}
               </div>
             {% endif %}
-          </div>
-
-          {% if is_product_modal %}
-            <a
-              class="product__view-details"
-              href="{{ product.url | within: collection }}"
-              title="{{ product.title | escape }}"
-            >
-              {{- 'collections.general.view_product_details' | t -}}
-            </a>
           {% endif %}
 
         {%- elsif block.type == 'form' -%}
@@ -318,7 +271,6 @@
                   sold_out_options: sold_out_options,
                   selected_variant: selected_variant,
                   show_payment_button: block.settings.show_payment_button,
-                  show_recipient_form: block.settings.show_gift_card_recipient_form,
                   collection_handles: collection_handles
                 %}
               {% endunless %}
@@ -362,34 +314,6 @@
             </div>
           {% endif %}
 
-        {%- elsif block.type == 'rating' -%}
-          {% if product.metafields.reviews.rating.value != blank %}
-            <div class="product__rating rating">
-              {%
-                render 'rating-stars',
-                value: product.metafields.reviews.rating.value.rating,
-                scale_max: product.metafields.reviews.rating.value.scale_max,
-              %}
-
-              <p class="rating__text">
-                <span aria-hidden="true">
-                  {{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}
-                </span>
-              </p>
-
-              <p class="rating__count">
-                <span aria-hidden="true">
-                  {{ product.metafields.reviews.rating_count }}
-                  {% if product.metafields.reviews.rating_count > 1 %}
-                    {{ "general.accessibility.star_reviews_text" | t }}
-                  {% else %}
-                    {{ "general.accessibility.star_review_text" | t }}
-                  {% endif %}
-                </span>
-              </p>
-            </div>
-          {% endif %}
-
         {%- elsif block.type == 'share' -%}
           {% comment %} Social share icons {% endcomment %}
           <div class="product__social-share has-padding-top">
@@ -407,6 +331,8 @@
           </div>
         {%- endif -%}
       </div>
+
     {%- endfor -%}
+
   </div>
 </div>

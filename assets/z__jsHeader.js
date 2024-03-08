@@ -1,6 +1,5 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/* eslint-disable */
 window.PXUTheme.jsHeader = {
   init: function($section) {
 
@@ -32,6 +31,9 @@ window.PXUTheme.jsHeader = {
       })
     } else if (this.header_layout == 'vertical') {
       $section.find('.header-sticky-wrapper').stick_in_parent();
+      if(window.PXUTheme.theme_settings.announcement_enabled == true) {
+        window.PXUTheme.jsAnnouncementBar.addVerticalHeaderTopMargin();
+      }
       this.addOffScreenDropdownCheck();
     }
 
@@ -71,13 +73,6 @@ window.PXUTheme.jsHeader = {
       }
     });
 
-    if (window.PXUTheme.theme_settings.search_layout == 'overlay') {
-      document.body.addEventListener('click', e => {
-        if (e.target === document.querySelector('[data-site-overlay]')) {
-          window.PXUTheme.jsHeader.hideSearch();
-        }
-      });
-    }
   },
   toggleMenuClick: function(e, $this) {
     var $parentWrap = $this.parents('.has-dropdown, .has-mega-menu');
@@ -137,7 +132,7 @@ window.PXUTheme.jsHeader = {
 
     $stickyEl.sticky({
       wrapperClassName: 'header-sticky-wrapper',
-      zIndex: 70,
+      zIndex: 40,
       topSpacing: offset || 0
     })
     .on('sticky-start', () => {
@@ -146,7 +141,7 @@ window.PXUTheme.jsHeader = {
 
       // Hide the mini cart for centered header layout
       if(window.PXUTheme.theme_settings.header_layout == 'centered') {
-        $('.top-bar [data-ajax-cart-trigger] [data-ajax-cart-mini_cart]').css('display', 'none');
+        $('[data-ajax-cart-trigger]').removeClass('show-mini-cart');
       }
 
       // Get header height is sticky enabled
@@ -183,11 +178,6 @@ window.PXUTheme.jsHeader = {
         $stickyEl.sticky('update');
       }, 250);
 
-      // Un-hide the mini cart when scrolled back to the top
-      if(window.PXUTheme.theme_settings.header_layout == 'centered') {
-        $('.top-bar [data-ajax-cart-trigger] [data-ajax-cart-mini_cart]').css('display', 'block');
-      }
-
       this.$el.find('.sticky-menu-wrapper').removeClass('is-visible');
       this.$menuToggle.removeClass('is-active');
 
@@ -219,11 +209,9 @@ window.PXUTheme.jsHeader = {
   },
   showSearch: function() {
     $('[data-show-search-trigger]').addClass('is-active');
-
     if(window.PXUTheme.theme_settings.search_layout == 'overlay') {
-      $('[data-search-type="overlay"]').addClass('is-opened');
-      $('.search-form .search__fields input[type="text"]')[0].focus();
-      window.PXUTheme.predictiveSearch.lockBodyScroll();
+      $('[data-search-type="'+window.PXUTheme.theme_settings.search_layout+'"]').toggleClass('is-opened');
+      $('.search-form .search__fields input[type="text"]').focus();
     } else {
       $.fancybox.open($('.js-search-popup'), {
         baseClass: 'search__lightbox',
@@ -236,26 +224,16 @@ window.PXUTheme.jsHeader = {
           preventCaptionOverlap: false,
           toolbar: false,
         },
-        touch: false,
         beforeClose: function(){
           $('[data-show-search-trigger]').removeClass('is-active');
-        },
-        afterShow: function() {
-          // Set the cursor at the end of the input field for better UX,
-          // otherwise it may be at the beginning of the input field when the input gets focus.
-          const searchInputEl = $('.search-form .search__fields input[type="text"]')[0];
-          const searchTermLength = searchInputEl.value.length;
-          searchInputEl.setSelectionRange(searchTermLength, searchTermLength);
-        },
+        }
       })
     }
   },
   hideSearch: function() {
     $('[data-show-search-trigger]').removeClass('is-active');
-    if(window.PXUTheme.theme_settings.search_layout == 'overlay' || window.PXUTheme.theme_settings.header_layout == 'search_focus' || window.PXUTheme.theme_settings.header_layout == 'vertical') {
-      $('[data-autocomplete-true] .search__results-wrapper').hide();
-      $('[data-search-type="overlay"]').removeClass('is-opened');
-      window.PXUTheme.predictiveSearch.unlockBodyScroll();
+    if(window.PXUTheme.theme_settings.search_layout == 'overlay') {
+      $('[data-search-type="'+window.PXUTheme.theme_settings.search_layout+'"]').removeClass('is-opened');
     } else {
       $.fancybox.close($('[data-search-type="'+window.PXUTheme.theme_settings.search_layout+'"]'));
     }

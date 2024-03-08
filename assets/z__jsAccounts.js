@@ -1,23 +1,25 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
 window.PXUTheme.jsAccounts = {
-  init() {
-    $('.js-recover-password').on('click', () => {
+  init: function($section){
+
+    $('.js-recover-password').on('click', function(){
       $('#login').hide();
       $('#recover-password').show();
     });
 
-    $('.cancel-recover-password').on('click', () => {
+    $('.cancel-recover-password').on('click', function(){
       $('#recover-password').hide();
-      $('#login, #customer_login').show();
-    });
+      $('#login').show();
+    })
+
   },
 
-  unload() {
+  unload: function($section) {
     $('.js-recover-password').off();
     $('.cancel-recover-password').off();
-  },
-};
+  }
+}
 
 /******/ })()
 ;

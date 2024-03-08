@@ -13,43 +13,46 @@
     {% if settings.stickers_enabled == false %}
       {{ 'collections.general.coming_soon' | t }}
     {% endif %}
-  {% elsif product.available == false %}
-    <span class="product-thumbnail__price">
-      {{ 'collections.general.sold_out' | t }}
-    </span>
   {% else %}
     <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
       {% if product.price_varies and product.price_min > 0 %}
-        <small><em>{{ 'products.general.from' | t }}</em></small>
+        <small
+          ><em>{{ 'products.general.from' | t }}</em></small
+        >
       {% endif %}
       {% if product.price_min > 0 %}
         <span class="money">
-          {%
-            render 'price-element',
-            price: product.price_min
-          %}
+          {% render 'price-element', price: product.price_min %}
         </span>
       {% else %}
         {{ settings.free_price_text }}
       {% endif %}
-      {% if product.compare_at_price > product.price %}
+      {%- assign variant = product.selected_or_first_available_variant -%}
+      {% if variant.price < variant.compare_at_price %}
         <span class="product-thumbnail__was-price compare-at-price">
           <span class="money">
-            {%
-              render 'price-element',
-              price: product.compare_at_price,
-            %}
+            {% render 'price-element', price: variant.compare_at_price %}
           </span>
         </span>
       {% endif %}
     </span>
     {% if settings.select_first_available_variant %}
       {%- assign variant_for_unit_price = product.variants | sort: 'price' | first -%}
-      {%
-        render 'unit-price',
-        item: variant_for_unit_price,
-        class: 'product-thumbnail__unit-price'
-      %}
+      {% render 'unit-price', item: variant_for_unit_price, class: 'product-thumbnail__unit-price' %}
     {% endif %}
   {% endif %}
 </div>
+
+{% comment %} Custom Add To Cart Button -- inline css MUST remain {% endcomment %}
+<form id="buy-btn" method="post" action="/cart/add">
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+  <input
+    type="submit"
+    style="font-size: 14px !important; font-weight: 500; color: #FFF; background-color: black; border: solid #000 1.2px; border-radius: 3.6px; width: 60%;"
+    value="{% if product.variants.first.available%}Add to cart{% else %}SOLD OUT{% endif%}"
+    class="ajax-cart__button button--add-to-cart button"
+    {% unless product.variants.first.available %}
+      disabled
+    {% endunless %}
+  >
+</form>

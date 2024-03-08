@@ -1,16 +1,1 @@
-{
-  "sections": {
-    "banner": {
-      "type": "fallback_image_banner",
-      "settings": {}
-    },
-    "main": {
-      "type": "collection__main",
-      "settings": {}
-    }
-  },
-  "order": [
-    "banner",
-    "main"
-  ]
-}
+{"sections":{"banner":{"type":"fallback_image_banner","disabled":true,"settings":{"image_darken":false,"width":"wide","banner_height":"medium","padding_top":0,"padding_bottom":0,"css_class":"","custom_css":""}},"main":{"type":"collection__main","blocks":{"d0d6ed6c-0bf5-4997-a063-8efe75b2f3e2":{"type":"html","settings":{"html_content":"<h3 class=\"filter-title\">Filter By<\/h3>"}},"97d2a392-22fd-4f8f-b5c1-e67e14724459":{"type":"collection_list","settings":{"title":"Collections"}},"2cb2d998-264b-499e-841b-e35bd56c887a":{"type":"tag_filter","settings":{"title":"Capacity","filter_tags":"32GB, 64GB, 128GB, 256GB, 512GB, 1TB","enable_filter_swatches":false}},"0ff39ad8-770d-4ead-b51d-68ad57f3be2f":{"type":"tag_filter","settings":{"title":"Color","filter_tags":"Alpine Green, Black, Blue, Charcoal, Cyprus Green, Deep Navy, Forest Green, Ginger, Green, Gold, Graphite, Kumquat, Lavender, Midnight, Midnight Blue, Midnight Green, Navy, Orange, Pacific Blue, (Product) Red, Pink, Purple, Rose Gold, Red, Saddle Brown, Sky Blue, Sierra Blue, Silver, Space Grey, Starlight, Stone, Sunflower, Turquoise, White, Yellow","enable_filter_swatches":true}},"8b50b41d-847a-49e4-a7e3-2267d5afb446":{"type":"tag_filter","settings":{"title":"Processor","filter_tags":"M1 Chip, M2 Chip","enable_filter_swatches":false}},"ddf1649c-0d40-4d05-9325-e75b68afb288":{"type":"tag_filter","settings":{"title":"Compatibility","filter_tags":"","enable_filter_swatches":false}}},"block_order":["d0d6ed6c-0bf5-4997-a063-8efe75b2f3e2","97d2a392-22fd-4f8f-b5c1-e67e14724459","2cb2d998-264b-499e-841b-e35bd56c887a","0ff39ad8-770d-4ead-b51d-68ad57f3be2f","8b50b41d-847a-49e4-a7e3-2267d5afb446","ddf1649c-0d40-4d05-9325-e75b68afb288"],"settings":{"collection_breadcrumb":true,"collection_tags":false,"collection_sort":true,"show_sidebar":true,"sidebar_position":"left","show_promo_banner":false,"image_darken":true,"promo_title":"Special sale on now!","promo_text":"<p>Description of promotion with lots of details.<\/p>","banner_height":"medium","align_height":true,"collection_height":200,"products_per_row":4,"mobile_products_per_row":"1","pagination_limit":50,"pagination_type":"basic_pagination","width":"standard","padding_top":40,"padding_bottom":40,"css_class":"","custom_css":".product-thumbnail__title{\nfont-weight: 300;\ncolor: #666; \nfont-size:14px;\n}\n\n.money{\nfont-weight:700;\nfont-size:16px;\n}\n\n.sold-out {\nfont-weight:600;\n}\n\n.sidebar-block__heading{\ncolor:#666;\nfont-weight: 300;\nfont-size:16px;\nborder-bottom: solid 2px #f9f9f9;\npadding-bottom: 5px;\n}\n\n.icon{\nheight:1rem;\ncolor:#666;\n}\n\n.filter-title{\nfont-weight: 600;\nline-height: 24px; \nfont-size: 1.8rem;\npadding-bottom: 5px;\nborder-bottom: solid 2px #f9f9f9;\n}"}}},"order":["banner","main"]}

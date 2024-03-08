@@ -106,8 +106,8 @@
 {% comment %}
   Twitter user name of the site, based on theme settings
 {% endcomment %}
-{%- if settings.x_link != blank -%}
-  <meta name="twitter:site" content="{{ settings.x_link | split: 'x.com/' | last | split: 'twitter.com/' | last | prepend: '@' }}">
+{%- if settings.twitter_link != blank -%}
+  <meta name="twitter:site" content="{{ settings.twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
 {%- endif -%}
 <meta name="twitter:card" content="summary">
 {%- if template.name == 'product' -%}

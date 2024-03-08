@@ -22,11 +22,9 @@
       <a href="{{ block.settings.promo_link }}">
     {% endif %}
       {% if block.settings.promo_image %}
-        {%
-          render 'image-element',
-          image: block.settings.promo_image,
-          alt: block.settings.logo.alt,
-          focal_point: block.settings.promo_image.presentation.focal_point,
+        {% render 'image-element',
+                image: block.settings.promo_image,
+                alt: block.settings.logo.alt
         %}
       {% else %}
         {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}

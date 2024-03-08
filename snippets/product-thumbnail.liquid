@@ -27,6 +27,13 @@
 
 {% if align_height == true %}
   {% style %}
+    .product-{{ product.id }}.thumbnail .image__container img,
+    .product-{{ product.id }}.thumbnail .product-thumbnail__video .plyr {
+      max-width: 100%;
+      width: {{ height }}px;
+      margin: 0 auto;
+    }
+
     .shopify-model-viewer-ui model-viewer {
       --progress-bar-height: 2px;
       --progress-bar-color: {{ settings.regular_color }};
@@ -74,7 +81,7 @@
               {%
                 render 'product-thumbnail__sticker',
                 product: product,
-                context: 'thumbnail',
+                context: 'product',
                 collection_handles: collection_handles
               %}
             {% endif %}
@@ -85,7 +92,7 @@
               image: product.featured_media.preview_image,
               alt: alt_text,
               object_fit: align_height,
-              max_height: height,
+              max_height: height
             %}
 
             {% comment %} Secondary image {% endcomment %}
@@ -107,7 +114,7 @@
                   alt: alt_text,
                   object_fit: align_height,
                   max_height: height,
-                  additional_classes: 'secondary swap--visible',
+                  additional_classes: 'secondary swap--visible'
                 %}
               {% endif %}
             {% endif %}
@@ -130,19 +137,8 @@
 
                     {% if collection_handles contains 'coming-soon' %}
                       <span>{{ 'collections.general.coming_soon' | t }}</span>
-                    {% elsif product.available == false %}
-                      <span class="product-thumbnail__price">
-                        {{ 'collections.general.sold_out' | t }}
-                      </span>
                     {% else %}
-                      <span
-                        class="
-                          product-thumbnail__price price
-                          {% if product.compare_at_price > product.price %}
-                            sale
-                          {% endif %}
-                        "
-                      >
+                      <span class="product-thumbnail__price price {% if product.compare_at_price_max > product.price_min %}sale{% endif %}">
                         {% if product.price_varies %}
                           <small><em>{{ 'products.general.from' | t }}</em></small>
                         {% endif %}
@@ -157,12 +153,12 @@
                           {{ settings.free_price_text }}
                         {% endif %}
                         {%- assign variant = product.selected_or_first_available_variant -%}
-                        {% if product.compare_at_price > product.price %}
+                        {% if product.compare_at_price_max > product.price_min %}
                           <span class="product-thumbnail__was-price compare-at-price">
                             <span class="money">
                               {%
                                 render 'price-element',
-                                price: product.compare_at_price,
+                                price: product.compare_at_price_max
                               %}
                             </span>
                           </span>
@@ -185,40 +181,19 @@
             {% if settings.enable_quickshop %}
               {%
                 render 'product-thumbnail__quick-shop-button',
-                product: product,
+                product: product
               %}
             {% endif %}
 
             {% if hover_enabled %}
-              {% if settings.enable_shopify_collection_badges and product.metafields.reviews.rating.value != blank %}
-                <div class="product__rating rating">
-                  {%
-                    render 'rating-stars',
-                    value: product.metafields.reviews.rating.value.rating,
-                    scale_max: product.metafields.reviews.rating.value.scale_max,
-                  %}
-
-                  <p class="rating__text">
-                    <span aria-hidden="true">
-                      {{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}
-                    </span>
-                  </p>
-
-                  <p class="rating__count">
-                    <span aria-hidden="true">
-                      {{ product.metafields.reviews.rating_count }}
-                      {% if product.metafields.reviews.rating_count > 1 %}
-                        {{ "general.accessibility.star_reviews_text" | t }}
-                      {% else %}
-                        {{ "general.accessibility.star_review_text" | t }}
-                      {% endif %}
-                    </span>
-                  </p>
-                </div>
+              {% if settings.enable_shopify_collection_badges %}
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
               {% endif %}
             {% endif %}
+
           </div>
         {% endif %}
+
       </div>
 
       <div class="thumbnail__caption text-align-{{ settings.thumbnail_text_alignment }}">
@@ -236,37 +211,10 @@
   %}
 
   {% if hover_enabled == false %}
-    {% if settings.enable_shopify_collection_badges and product.metafields.reviews.rating.value != blank %}
-      <div
-        class="
-          product__rating
-          rating
-          is-justify-{{ settings.thumbnail_text_alignment }}
-        "
-      >
-        {%
-          render 'rating-stars',
-          value: product.metafields.reviews.rating.value.rating,
-          scale_max: product.metafields.reviews.rating.value.scale_max,
-        %}
-
-        <p class="rating__text">
-          <span aria-hidden="true">
-            {{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}
-          </span>
-        </p>
-
-        <p class="rating__count">
-          <span aria-hidden="true">
-            {{ product.metafields.reviews.rating_count }}
-            {% if product.metafields.reviews.rating_count > 1 %}
-              {{ "general.accessibility.star_reviews_text" | t }}
-            {% else %}
-              {{ "general.accessibility.star_review_text" | t }}
-            {% endif %}
-          </span>
-        </p>
-      </div>
+    {% if settings.enable_shopify_collection_badges %}
+    <div class="product-thumbnail__review-stars is-flex is-justify-{{ settings.thumbnail_text_alignment }}">
+      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+    </div>
     {% endif %}
   {% endif %}
 </div>

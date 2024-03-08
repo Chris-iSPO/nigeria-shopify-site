@@ -1,0 +1,1 @@
+{"sections":{"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":true,"heading_alignment":"left","width":"standard","padding_top":20,"padding_bottom":20,"css_class":"","custom_css":""}},"16627031900c0096e0":{"type":"custom-liquid","settings":{"custom_liquid":"{% render 'mac_mini_m2' %}"}}},"order":["main","16627031900c0096e0"]}

@@ -103,8 +103,7 @@
                   render 'image-element',
                   image: block.settings.image,
                   alt: block.settings.image.alt,
-                  additional_classes: 'mega-menu__image',
-                  focal_point: block.settings.image.presentation.focal_point,
+                  additional_classes: 'mega-menu__image'
                 %}
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -137,8 +136,7 @@
                   render 'image-element',
                   image: block.settings.image,
                   alt: block.settings.image.alt,
-                  additional_classes: 'mega-menu__image',
-                  focal_point: block.settings.image.presentation.focal_point,
+                  additional_classes: 'mega-menu__image'
                 %}
               {% else %}
                 {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -179,7 +177,6 @@
                   {%
                     render 'product-thumbnail__sticker',
                     product: product,
-                    context: 'thumbnail',
                     collection_handles: collection_handles
                   %}
                 {% endif %}
@@ -188,7 +185,7 @@
                   render 'image-element',
                   image: product.featured_image,
                   alt: product.featured_image.alt,
-                  additional_classes: 'mega-menu__image',
+                  additional_classes: 'mega-menu__image'
                 %}
               </a>
 
@@ -201,7 +198,7 @@
               {% if collection_handles contains 'coming-soon' %}
                 <span>{{ 'collections.general.coming_soon' | t }}</span>
               {% else %}
-                <span class="price {% if product.compare_at_price > product.price %}sale{% endif %}">
+                <span class="price {% if product.compare_at_price_max > product.price %}sale{% endif %}">
                   {% if product.available %}
                     {% if product.price_varies and product.price_min > 0 %}
                       <small><em>{{ 'products.general.from' | t }}</em></small>
@@ -216,12 +213,12 @@
                     {% else %}
                       {{ settings.free_price_text }}
                     {% endif %}
-                    {% if product.compare_at_price > product.price %}
+                    {% if product.compare_at_price_max > product.price %}
                       <span class="compare-at-price">
                         <span class="money">
                           {%
                             render 'price-element',
-                            price: product.compare_at_price,
+                            price: product.compare_at_price_max
                           %}
                         </span>
                       </span>
@@ -272,8 +269,7 @@
                   render 'image-element',
                   image: block.settings.image_top,
                   alt: block.settings.image_top.alt,
-                  additional_classes: 'mega-menu__image',
-                  focal_point: block.settings.image_top.presentation.focal_point,
+                  additional_classes: 'mega-menu__image'
                 %}
               {% if block.settings.image_link_top != blank %}
                 </a>
@@ -336,8 +332,7 @@
                   render 'image-element',
                   image: block.settings.image_bottom,
                   alt: block.settings.image_bottom.alt,
-                  additional_classes: 'mega-menu__image',
-                  focal_point: block.settings.image_bottom.presentation.focal_point,
+                  additional_classes: 'mega-menu__image'
                 %}
               {% if block.settings.image_link_bottom != blank %}
                 </a>

@@ -1,0 +1,376 @@
+      .section{
+        max-width:none !important;
+        width: 100%!important;
+      }
+
+      .one-whole {
+          width: 100%!important;
+      }
+		
+		/* base css */
+		a { color:#2997ff;}
+		a.whitebg { color:#0066cc;}
+		a,a:link,a:visited,a:active,a.products,a.products:link,a.products:visited,a.products:active { text-decoration:none }
+		a span:hover { text-decoration:underline; }
+		sup { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", sans-serif, "SF Pro Icons";  -webkit-text-size-adjust: none; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility; font-size:75%; line-height:75%; -webkit-text-size-adjust:120%; }
+		body { margin:0; padding:0; color:#000; font-size: 16px; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", "Helvetica", "Arial", sans-serif, "SF Pro Icons";  -webkit-text-size-adjust: none; -webkit-font-smoothing: antialiased; text-rendering: optimizelegibility; width: 100% !important; background-color:#ffffff;}
+		* { -webkit-font-smoothing:antialiased; }
+		p { font-size: 1.2rem; line-height: 1.6rem;   font-weight: 500; }
+		span.backlit { background-color:#00ff00; }
+		span.ital { font-style: italic; padding-right:5px; }
+		span.diamond { font-size:0.5em ;vertical-align: super; }
+		header span.diamond { font-size:0.4em ;vertical-align: super; }
+		span.legallink { color: #424245; }
+		section.buynow .bButton { color: #86868b; }
+		body { background:#f5f5f7; }
+	
+		
+		/* structure css */
+		.main_container { padding:0 20px; margin:0 auto; ___min-width:320px; ____max-width:734px; display__: flex; flex-direction__: column; }
+		section.hdr header { margin-top:2rem; }
+		header { font-weight:800; font-size: 2.65rem; line-height: 2.65rem; letter-spacing: -1px; }
+		section { text-align:center; }
+		img.largecrop { display:none; }
+		img.medcrop { display:none; }
+		img.smallcrop { display:inline-block; }
+		section.reason .smshow {  }
+		section.reason .mlshow { display:none; }
+		section.reason .lshow { display:none; }
+		span.nowrap { white-space:nowrap; }
+		
+		/* sections css */
+		section.hdr { padding: 0; background-color:#ffffff; padding-top:2rem;  }
+		section.hdr div.logo { margin: 0 auto; width:100%; max-width: 80px; }
+		section.hdr div.logo img { width:100%;}
+		section.hdr div.hero { margin: 0 auto; width:80%; max-width: 645px; margin-top: 3.1rem; margin-bottom: 3.6rem; }
+		section.hdr div.hero img { width:100%;}
+		section.hdr h2 {font-weight:600;  margin:0; font-size: 1.75rem;  letter-spacing: -1px;  }
+		section.hdr button, section.hdr a.aButton { margin: 4rem 0 5rem; max-width: 125px; }
+		section.hdr p { font-size: 1.3rem;  letter-spacing: 0rem; margin-top: 3.1rem; }
+
+		section.reason { border-radius: 20px; overflow: hidden; text-align:left; margin-top:20px; display:flex; flex-direction: column;  }
+		section.reason.black { background:#000; color:#fff; }
+		section.reason.white { background:#fff; color:#000; }
+		section.reason header { font-size: 2.3rem; line-height: 2.55rem; margin:3rem 0;  }
+		
+		section.panel1 { text-align: center; align-items: center; margin-top:50px; flex-direction: column; flex-direction: column-reverse; }
+		section.panel1 p { padding-left:1rem; padding-right:1rem; padding-bottom: 4rem;}
+		section.panel1 .imgWrap { padding-top:5rem; }
+		section.panel1 .imgWrap img { width:90%; margin-right:0; padding-right:0; }
+			
+		section.panel2 { flow-direction: column; text-align: center; align-items: center; }
+		section.panel2 p { padding-left:1.5rem; padding-right:1.5rem; }
+		section.panel2 { flex-direction:column; padding-bottom: 3rem; }
+		section.panel2 .sectionwrap { width:100%; padding:0; margin-top:5rem;}
+		section.panel2 .imgWrap { width:100%; padding-top:1.5rem; padding-bottom:3rem; text-align:right; }
+		section.panel2 .imgWrap img { width:90%; margin-right:0; padding-right:0; }
+
+		section.panel3 { text-align: center; align-items: center; }
+		section.panel3 p {  }
+		section.panel3 { flex-direction: column;  }
+		section.panel3 .sectionwrap { width:60%; padding-right:0px; }
+		section.panel3 .imgWrap { display: flex; width:90%;  align-self:flex-end;vertical-align: bottom;}
+		section.panel3 .imgWrap img { align-self:flex-end; width:100%; margin-right:0; padding-right:0; }
+		section.panel3 .sectionwrap header {  margin-top:8rem; }
+		section.panel3 .sectionwrap p { padding:0 1.4rem; margin-bottom:3rem; }
+		section.panel3 .sectionwrap { width:100%; padding-right:0px; }
+
+		section.panel4 { text-align: center; align-items: center; }
+		section.panel4 p { }
+		section.panel4 { flex-direction: column; }
+		section.panel4 .padder { width:4%;  }
+		section.panel4 .sectionwrap { width:90%; padding-right:0px; }
+		section.panel4 .imgWrap { width:90%; padding-right:0px; padding-top:5rem; padding-bottom:5px; text-align: left; }
+		section.panel4 .imgWrap img { width:100%; margin-right:0; padding-right:0; max-width:472px; }
+		section.panel4 .sectionwrap header {   }
+		section.panel4 .sectionwrap p { padding:0 5%; margin-bottom:6rem;  }
+			
+		section.panel5 { text-align: center; align-items: center; }
+		section.panel5 p {  }
+		section.panel5 { flex-direction:column; flex-direction: column-reverse;}
+		section.panel5 .imgWrap { width:90%; padding-right:0px; padding-top:6rem; padding-bottom:1rem; align-content: left;  }
+		section.panel5 .sectionwrap { width:90%; padding-right:0px; }
+		section.panel5 .imgWrap img { width:75%; margin-right:0; align-self:flex-start; }
+		section.panel5 .sectionwrap header {   }
+		section.panel5 .sectionwrap p { padding:0 3rem; margin-bottom:6rem; }
+
+		section.panel6 { text-align: center; align-items: center; }
+		section.panel6 p {  }
+		section.panel6 { flex-direction:column; }
+		section.panel6 .padder { width:5%;  }
+		section.panel6 .sectionwrap { width:90%; padding-right:0px; }
+		section.panel6 .imgWrap { width:90%; padding-right:0px; padding-top:4.5rem; padding-bottom:1.5rem; }
+		section.panel6 .imgWrap img { width:90%; margin-right:0; padding-right:0; }
+		section.panel6 .sectionwrap header {   }
+		section.panel6 .sectionwrap p { padding:0 0; margin-bottom:6rem; }
+
+		section.whichmacwrap { display:flex;  flex-direction:column;  margin-bottom:2rem; padding-top:30px; padding-bottom:6rem; padding-left:10px; padding-right:10px; }
+		section.whichmacwrap header { align-self: center; text-align:center; font-size: 2.6rem; line-height: 2.8rem; font-weight:600; margin-top:20px; margin-bottom:20px;  }
+		section.whichmacwrap ul { list-style:none; margin-left:0; margin-right:0;  padding-left:0;  padding-right:0; font-size:14px; line-height:1.3rem;}
+		section.whichmacwrap ul li { margin-top:0.6rem; margin-bottom:0.6rem; }
+
+		section.whichmac { display: flex; flex-wrap:wrap }
+		section.whichmac .buynow { flex-basis: 100%; margin-bottom:0.6rem; }
+		section.whichmac ul.superoffset { margin-top: 0.5rem; }
+		section.whichmac span.whichmac_ttl { display:block; font-size:1.75rem; line-height:2rem; color:#000; font-weight:600; letter-spacing: -0.03rem; } 
+		section.whichmac span.whichmac_sub { display:block; font-size:1.75rem; line-height:2rem; color:#86868b; font-weight:600; letter-spacing: -0.03rem; } 
+		section.whichmac.resources span.whichmac_ttl {  } 
+		
+		section.whichmac.resources .hero { max-height:60px;  }
+		section.whichmac.resources section.buynow img.hero { margin-bottom: 0.8rem;}
+
+		section.whichmacresourceswrap header { align-self: center; text-align:center; font-size: 2.3rem; line-height: 2.4rem; font-weight:600; margin-bottom:0.5rem; margin-top:5rem; }
+		section.whichmacresourceswrap div { align-self: center; text-align:center; }
+		section.whichmacresourceswrap header.getstarted { margin-top:5.5rem; margin-bottom:0.5rem; }
+		section.whichmacresourceswrap h2 { margin-bottom:2rem; margin-top:0.5rem; font-weight:500; font-size:1.5rem; line-height:1.6rem }
+
+		
+		section.buynow { border-radius: 20px; overflow: hidden; text-align:center; margin-top:20px; display:flex; flex-direction: column;  }
+		section.buynow p { font-size: 1rem;  letter-spacing: -0.05rem; }
+		section.buynow .sectionwrap {  }
+		section.buynow.black { background:#000; color:#fff; }
+		section.buynow.white { background:#fff; color:#000; }
+		section.buynow h3 { margin:0; font-size: 1.4rem;  }
+		section.buynow header { font-size: 2.1rem; line-height: 2.2rem; margin:5px 0;  }
+		
+
+		section.buynow a.bButton span.gt {  margin-left:5px; }
+		section.buynow .sectionwrap { padding: 38px 10px 14px 10px; }
+		section.buynow .sectionwrap .grey { color:#86868b; }
+		section.buynow .aButton { align-self: center; margin-top:auto; font-size:14px; color:#0066cc; }
+		section.buynow img.hero { width: auto; max-height: 8rem; margin-bottom:1.5rem; }
+		section.buynow p { font-size: 0.95rem;}
+		section.buynow img.hero.macbookpros { width: auto; max-height: 9rem; margin-top: calc(30px - 1.5rem);  }
+		section.buynow span.macbookpros.whichmac_ttl { letter-spacing: -0.06rem; }
+		section.buynow img.hero.imac { width: auto; max-height: 12.5rem; margin-top: calc(34px - 1.5rem);  }
+		section.buynow img.hero.macmini { width: auto; max-height: 3.5rem; margin-top: calc(2rem);  }
+		section.buynow img.wmstacked { display:block; height: 8rem; margin-left: 0; margin-top: 18px; margin-bottom: 18px; align-self: center; display: block; margin: 0 auto;}
+		section.buynow img.wm { height: 6rem; margin-left: 0; margin-top: 18px; margin-bottom: 18px; align-self: center; display: block; margin: 0 auto; }
+		section.buynow img.wmmacbookpros { display:none; }
+		section.resources section.buynow .bButton { color: #0066cc; }	
+
+		section.legal { background:#f5f5f7;  text-align:center; margin-top:0px; display:flex; flex-direction: column;  }
+		section.legal .sectionwrap { padding:20px 40px; color:#6e6e73; }
+		section.legal .sectionwrap div { text-align:left; }
+		section.legal .sectionwrap span.hdr { font-weight:600; }
+		section.legal ol { padding-left:0; }
+		section.legal div p { font-size:0.75rem; line-height:1.1rem; text-align:left; margin-top:10px; letter-spacing: 0;}
+	
+	
+	
+		/* buttons css */
+		.aButton { background-color:transparent; border-radius:50px; border:1px solid #666666; display:inline-block; cursor:pointer; color:#666666; font-size:1.1rem; padding:0.5rem 1.5rem; text-decoration:none; max-width: 10rem; margin: 0 auto; }
+		.aButton:hover { background-color:#eeeeee; }
+		.aButton:active { position__:relative; top__:1px; }
+
+
+			
+		
+		/* media queries css */
+		/* iPhone SE adjusters */
+		@media screen and (max-width: 374px) and (orientation: portrait) { .main_container { padding:0; } }		
+		
+	
+	
+
+
+		/* media queries css */
+		/* Medium */
+		@media screen and (min-width: 735px) and (max-width: 1068px) { 
+			
+			img.smallcrop { display:none; }
+			img.largecrop { display:none; }
+			img.medcrop { display:inline-block; }
+			section.reason .smshow { display:none; }
+			section.reason .mlshow { display:inline; }
+			section.reason .lshow { display:none; }
+
+			.main_container { padding:0 45px; margin:0 auto; min-width:320px; max-width:734px; }
+			section.hdr { padding-top:3.5rem;  }
+			section.hdr header { font-weight:bold; font-weight:900; font-size: 4.25rem; line-height: 4.25rem; letter-spacing: -2px; margin-top:3.5rem;}
+			section.hdr div.logo { margin: 0 auto; width:20%; max-width: 115px; }
+			section.hdr div.logo img { width:100%;}
+			section.hdr div.hero { margin: 0 auto; width:80%; max-width: 645px; margin-top: 3.1rem; margin-bottom: 3.6rem; }
+			section.hdr div.hero img { width:100%;}
+			section.hdr h2 {font-weight:600;  margin:0; font-size: 2.25rem;  letter-spacing: -1px;  }
+
+			section.reason header { font-size: 2.5rem; line-height: 2.8rem; margin:5px 0;  }
+			section.reason p { }
+
+		
+			section.panel1 { max-width:735px; text-align: center; align-items: center; margin-top:50px; flex-direction: row; }
+			section.panel1 div.padder { width:3% }
+			section.panel1 div.sectionwrap {  width:47%; max-width: 371px; }
+			section.panel1 .imgWrap { width:50%; padding-top:0; text-align:right; }
+			section.panel1 .imgWrap img { width:100%; margin-right:0; padding-right:0; ___min-width: 360px; max-width: 371px; padding-top:3rem; padding-bottom:3rem; }
+			section.panel1 p { padding-left:2rem; padding-right:2rem; }
+			section.panel1 p { padding-bottom: 0;}
+		
+			section.panel2 { padding-bottom: 0; }
+			section.panel2 div.sectionwrap {  margin-top:6rem; }
+			section.panel2 p { padding-left:30%; padding-right:30%; margin-top:2rem; }
+			section.panel2 .imgWrap { padding-top: 4rem; padding-bottom: 4rem;  }
+			section.panel2 .imgWrap img { width:70%; margin-right:0; padding-right:0; }
+
+			section.panel3 { flex-direction: row;  }
+			section.panel3 .imgWrap { width: 50%; padding-top:4rem; }
+			section.panel3 .sectionwrap { width: 50%; padding-right: 10px; }			
+			section.panel3 .sectionwrap p { padding:0 12%; margin-bottom:8rem; }
+
+			section.panel4 .sectionwrap { width:46%; padding-right:0px; }
+			section.panel4 { flex-direction: row;  }
+			section.panel4 .imgWrap { width:50%; padding-right:0px; padding-top:25px; padding-bottom:25px; text-align: left; }
+			section.panel4 .imgWrap { max-width: 364px; padding-top:3.5rem;  padding-bottom:3.5rem; }
+			section.panel4 div.sectionwrap {  width:50%; }
+			section.panel4 .sectionwrap p { padding:0 5%; margin-bottom:0;  }
+			section.panel4 div.sectionwrap p {  padding-left:3.25rem;  padding-right:3.25rem; }
+
+			section.panel5 { flex-direction: row;  }
+			section.panel5 .imgWrap { width:50%; padding-right:0px; padding-top:3.42rem; padding-bottom:3.42rem; align-content: left; text-align:left; }
+			section.panel5 .imgWrap {  padding-top:3.35rem;  padding-bottom:3.35rem; }
+			section.panel5 .imgWrap img { width: 100%; max-width: 233px; }
+			section.panel5 .imgWrap { text-align: center;  padding-right:2rem; }
+			section.panel5 .sectionwrap { width:50%; padding-right:0px; }
+			section.panel5 .sectionwrap p { padding: 0 22%; margin-bottom:0;}
+		
+			section.panel6 { flex-direction:row; }
+			section.panel6 .imgWrap { width:50%; padding-right:0px; padding-top:6.5rem; padding-bottom:6.5rem; }
+			section.panel6 .imgWrap img { width:75%; margin-right:0; padding-right:0; }
+			section.panel6 .sectionwrap { width:45%; padding-right:0px; }
+			section.panel6 .sectionwrap p { padding:0 8%; }
+			section.panel6 .imgWrap {  padding-top:7.35rem;  padding-bottom:7.35rem; }
+			section.panel6 .imgWrap img { width: 100%; max-width: 364px; }
+			section.panel6 .imgWrap { text-align: center;  padding-right:2rem; }
+			section.panel6 .sectionwrap p { padding: 0 5%; margin-bottom:0;  }
+		
+			section.whichmacwrap { display:flex;  flex-direction:column; margin-bottom:1rem; padding-top:70px; padding-bottom:5rem; padding-left:3rem; padding-right:3rem; }
+			section.whichmacwrap header { align-self: center; text-align:center; font-size: 4.25rem; line-height: 4.4rem; font-weight:600; margin-top:3rem; margin-bottom:1rem; padding-left: 1rem; padding-right: 1rem; }
+			section.whichmacwrap ul { list-style:none; margin-left:0; margin-right:0;  padding-left:0;  padding-right:0; font-size:14px; line-height:1.3rem;}
+			section.whichmacwrap ul li { margin-top:0.6rem; margin-bottom:0.6rem; }
+			section.whichmacresourceswrap h2 { width:70%; margin:0 auto;  margin-bottom:1.5rem; margin-top:0.5rem; font-weight:500; font-size:2rem; line-height:2.2rem;  }
+			section.whichmac span.whichmac_ttl { font-size:1.8rem; line-height:2rem; color:#000; font-weight:600; letter-spacing: -0.03rem; } 
+			section.whichmac span.whichmac_sub { font-size:1.8rem; line-height:2rem; color:#86868b; font-weight:600; letter-spacing: -0.03rem; } 
+
+			section.whichmac { display: flex; flex-wrap:wrap }
+			section.whichmac .buynow { flex-basis: 50%  }
+
+			section.buynow .sectionwrap { padding: 28px 10px 14px 10px; }
+			section.buynow {  margin-top:3.5rem; }
+			.resources section.buynow {  margin-top:1.5rem; }
+
+			section.buynow .sectionwrap { padding: 28px 10px 14px 10px; }
+			section.buynow .sectionwrap .grey { color:#86868b; }
+			section.buynow .aButton { align-self: center; margin-top:auto; font-size:14px; color:#0066cc; }
+			section.buynow img.hero { width: auto; max-height: 6.75rem;}
+			section.buynow p { font-size: 0.95rem;}
+			section.buynow img.hero.macbookpros { width: auto; max-height: 8.25rem; margin-top: calc(-1.5rem);  }
+			section.buynow img.hero.imac { width: auto; max-height: 9.5rem; margin-top: calc(34px - 1.5rem);  }
+			section.buynow img.hero.macmini { width: auto; max-height: 3rem; margin-top: calc(4px + 6.9rem);  }
+			section.buynow img.wm { height: 4.5rem; margin-left: 0; margin-top: 18px; margin-bottom: 18px; align-self: center; display: block; margin: 0 auto; }
+			section.legal .sectionwrap { padding: 20px 70px; }
+			section.buynow img.wm { display:block; }
+			section.buynow img.wmstacked { display:none; }
+
+			section.legal .sectionwrap { padding:20px 120px; color:#6e6e73; }
+
+		}		
+		
+		
+
+		/* media queries css */
+		/* Large */
+		@media screen and (min-width: 1069px) and (max-width: 3008px) { 
+
+			img.smallcrop { display:none; }
+			img.medcrop { display:none; }
+			img.largecrop { display:inline-block; }
+			section.reason .smshow { display:none; }
+			section.reason .mlshow { display:inline; }
+			section.reason .lshow { display:inline; }
+
+			.main_container { padding:0 45px; margin:0 auto; min-width:736px; max-width:1073px; }
+			section.hdr { padding-top:4.95rem;  }
+			section.hdr div.logo { margin: 0 auto; width:20%; max-width: 169px; }
+			section.hdr header { font-weight:800; font-weight:900; font-size: 4.85rem; line-height: 4.85rem; letter-spacing: -2px; margin-top:3.5rem;}
+			section.reason .sectionwrap {   }
+			section.hdr h2 {font-weight:500;  margin:0; font-size: 2.5rem;  letter-spacing: -1px;  }
+			section.reason h3 { font-size: 1.8rem; }
+			section.reason header { font-size: 3.5rem; line-height: 3.75rem; margin: 5px 0; }
+			section.reason p { font-size: 1.3rem; line-height:1.6rem; font-weight:500; letter-spacing: 0rem; }
+			
+
+			section.panel1 { text-align: center; align-items: center; margin-top:50px; flex-direction: row; }
+			ection.panel1 { flex-direction:row; }
+			section.panel1 .padder { width:7%;  }
+			section.panel1 .sectionwrap { width:43%; padding-right:0px; }
+			section.panel1 .imgWrap { width:50%; padding-right:0px; padding-top:25px; padding-bottom:25px; text-align:right; }
+			section.panel1 .imgWrap img { width:100%; margin-right:0; padding-right:0; max-width: 515px; }
+			section.panel1 .sectionwrap header {   }
+			section.panel1 p { padding-bottom: 0;}
+			
+			section.panel2 { padding-bottom: 0; }
+			section.panel2 .imgWrap img { width:70%; margin-right:0; padding-right:0; }
+
+			section.panel3 { flex-direction: row;  }
+			section.panel3 .sectionwrap { width:60%; padding-right:0px; }
+			section.panel3 .imgWrap { display: flex; width:40%;  align-self:flex-end;vertical-align: bottom;}
+			section.panel3 .sectionwrap p { padding:0 12%; margin-bottom:8rem; }
+
+			section.panel4 { flex-direction: row;  }
+			section.panel4 .imgWrap { width:50%; padding-right:0px; padding-top:25px; padding-bottom:25px; text-align: left; }
+			section.panel4 .sectionwrap { width:46%; padding-right:0px; }
+			section.panel4 .sectionwrap p { padding:0 5%; margin-bottom:0;  }
+
+			section.panel5 { flex-direction: row;  }
+			section.panel5 .imgWrap { width:50%; padding-right:0px; padding-top:3.42rem; padding-bottom:3.42rem; align-content: left; text-align:left; }
+			section.panel5 .sectionwrap { width:50%; padding-right:0px; }
+			section.panel5 .sectionwrap p { margin-bottom:0; }
+
+			section.panel6 { flex-direction:row; }
+			section.panel6 { flex-direction:row; }
+			section.panel6 .imgWrap { width:50%; padding-right:0px; padding-top:6.5rem; padding-bottom:6.5rem; }
+			section.panel6 .imgWrap img { width:75%; margin-right:0; padding-right:0; }
+			section.panel6 .sectionwrap { width:45%; padding-right:0px; }
+			section.panel6 .sectionwrap p { padding:0 8%; margin-bottom:0; }
+
+			section.whichmacwrap { display:flex;  flex-direction:column; margin-bottom:80px; padding-left:3rem; padding-right:3rem;padding-top:110px; padding-bottom:110px; }
+			section.whichmacwrap header { align-self: center; text-align:center; font-size: 4.2rem; line-height: 4.6rem; font-weight:600; margin-bottom:2rem;  }
+			section.whichmacwrap ul { list-style:none; margin-left:0; margin-right:0;  padding-left:0;  padding-right:0; font-size:0.85rem; line-height:1.3rem;}
+			section.whichmacwrap ul li { margin-top:0.6rem; margin-bottom:0.6rem; }
+			section.whichmacresourceswrap h2 { margin-top:0.5rem; font-weight:500; font-size:2rem; line-height:2.2rem }
+			section.whichmac span.whichmac_ttl { font-size:1.5rem; line-height:1.8rem; color:#000; font-weight:500; letter-spacing: -0.03rem; } 
+			section.whichmac span.whichmac_sub { font-size:1.5rem; line-height:1.8rem; color:#86868b; font-weight:500; letter-spacing: -0.03rem; } 
+			
+			section.whichmac { display: flex; flex-wrap:wrap }
+			section.whichmac .buynow { flex-basis: 33.333333%  }
+
+			section.buynow {  padding: 0; }
+			section.buynow .sectionwrap { padding: 28px 10px 14px 10px; }
+			section.buynow .sectionwrap .grey { color:#86868b; }
+			section.buynow .bButton { align-self: center; margin-top:auto; font-size:0.85rem; color:#0066cc; color:#86868b; }
+			section.resources section.buynow .bButton { color:#0066cc;  }
+			section.buynow img.hero { width: auto; max-height: 6.75rem;}
+			section.buynow p { font-size: 0.95rem;}
+			section.buynow img.hero.macbookpros { width: auto; max-height: 8.25rem; margin-top: calc(1.9rem);  }
+			section.buynow img.hero.imac { width: auto; max-height: 9.5rem; margin-top: calc(34px - 1.5rem);  }
+			section.buynow img.hero.macmini { width: auto; max-height: 3rem; margin-top: calc(4px + 6.9rem);  }
+			section.buynow img.wm { height: 5.5rem; margin-left: 0; margin-top: 18px; margin-bottom: 18px; align-self: center; display: block; margin: 0 auto; }
+
+
+			section.legal { min-width: 736px; max-width: 1073px; margin: 0 auto; }
+			section.legal .sectionwrap { padding:20px 50px; color:#6e6e73; }
+			section.legal .sectionwrap { padding: 0 30px; }
+
+			section.buynow img.wm { display:block; }
+			section.buynow img.wmstacked { display:none; }
+		
+		}
+
+		
+		/* media queries css */
+		/* iPad adjusters */
+
+		@media screen and (min-device-width: 1112px) and (max-device-width: 1112px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) { { 
+			section.reason header { font-size: 2.8rem; line-height: 2.9rem; }
+	
+		}		

@@ -1,0 +1,1 @@
+{"sections":{"main":{"type":"page-content__main","disabled":true,"settings":{"show_heading":true,"heading_alignment":"left","width":"wide","padding_top":20,"padding_bottom":20,"css_class":"","custom_css":""}},"16627199668b29d209":{"type":"custom-liquid","settings":{"custom_liquid":"{% render 'iPhone14_Pro' %}"}}},"order":["main","16627199668b29d209"]}
