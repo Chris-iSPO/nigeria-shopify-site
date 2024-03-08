@@ -1,0 +1,15 @@
+{
+  "recipient": {
+    "form": {
+      "checkbox_label": "Quiero enviar esto como regalo",
+      "email_label": "Correo electrónico del destinatario",
+      "email_placeholder": "Correo electrónico del destinatario *",
+      "error_message": "El correo electrónico no es válido",
+      "name_label": "Nombre del destinatario (opcional)",
+      "name_placeholder": "Nombre del destinatario (opcional)",
+      "message_label": "Mensaje (opcional)",
+      "message_placeholder": "Mensaje (opcional)",
+      "max_characters": "Máximo de {{ max_characters }} caracteres"
+    }
+  }
+}

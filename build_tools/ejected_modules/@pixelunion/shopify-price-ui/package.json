@@ -1,0 +1,145 @@
+{
+  "_args": [
+    [
+      "@pixelunion/shopify-price-ui@2.0.4",
+      "/Users/scottmarshall/Documents/pixel-union/flex"
+    ]
+  ],
+  "_from": "@pixelunion/shopify-price-ui@2.0.4",
+  "_id": "@pixelunion/shopify-price-ui@2.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-DMgzx6Xt+XQ0t9pOpGhNgbmvaRdvAmWrmCjslrvlAFbCWpb7iJvidY0ezgbx1rV6OSUNDxmEJr4Enl2jM+yrnQ==",
+  "_location": "/@pixelunion/shopify-price-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@pixelunion/shopify-price-ui@2.0.4",
+    "name": "@pixelunion/shopify-price-ui",
+    "escapedName": "@pixelunion%2fshopify-price-ui",
+    "scope": "@pixelunion",
+    "rawSpec": "2.0.4",
+    "saveSpec": null,
+    "fetchSpec": "2.0.4"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://npm.pkg.github.com/download/@pixelunion/shopify-price-ui/2.0.4/17ee4e2d11f2a1fd79d4423a57c3da5295c5a27b",
+  "_spec": "2.0.4",
+  "_where": "/Users/scottmarshall/Documents/pixel-union/flex",
+  "author": {
+    "name": "Pixel Union"
+  },
+  "bugs": {
+    "url": "https://github.com/pixelunion/shopify-price-ui/issues"
+  },
+  "description": "Pricing display for the product page/card.",
+  "devDependencies": {
+    "@babel/core": "7.13.14",
+    "@babel/plugin-external-helpers": "7.12.13",
+    "@babel/preset-env": "7.13.12",
+    "@rollup/plugin-commonjs": "18.0.0",
+    "@rollup/plugin-node-resolve": "11.2.1",
+    "babel-eslint": "10.1.0",
+    "eslint": "7.23.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-plugin-import": "2.22.1",
+    "rollup": "2.44.0",
+    "rollup-plugin-babel": "4.4.0",
+    "stylelint": "13.12.0",
+    "stylelint-config-recess-order": "2.3.0",
+    "stylelint-config-recommended-scss": "4.2.0",
+    "stylelint-config-standard": "21.0.0",
+    "stylelint-scss": "3.19.0",
+    "uglify-js": "3.13.3"
+  },
+  "homepage": "https://github.com/pixelunion/shopify-price-ui#readme",
+  "license": "UNLICENSED",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "name": "@pixelunion/shopify-price-ui",
+  "paskitPlugin": {
+    "build": [
+      {
+        "action": "copy",
+        "input": "snippets/price-ui-templates.liquid",
+        "output": "snippets/price-ui-templates.liquid"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/en.default.json",
+        "output": "locales/en.default.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/cs.json",
+        "output": "locales/cs.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/de.json",
+        "output": "locales/de.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/es.json",
+        "output": "locales/es.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/fr.json",
+        "output": "locales/fr.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/hi.json",
+        "output": "locales/hi.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/it.json",
+        "output": "locales/it.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/ja.json",
+        "output": "locales/ja.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/nl.json",
+        "output": "locales/nl.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/pt-BR.json",
+        "output": "locales/pt-BR.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/tr.json",
+        "output": "locales/tr.json"
+      },
+      {
+        "action": "mergeLocale",
+        "input": "src/locales/zh-CN.json",
+        "output": "locales/zh-CN.json"
+      }
+    ]
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelunion/shopify-price-ui.git"
+  },
+  "scripts": {
+    "build": "node rollup.js",
+    "prepare": "npm run build"
+  },
+  "umd": "dist/index.umd.js",
+  "umdName": "ShopifyPriceUI",
+  "version": "2.0.4"
+}
